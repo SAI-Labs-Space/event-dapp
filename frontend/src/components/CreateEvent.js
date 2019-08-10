@@ -105,63 +105,43 @@ function CreateEvent() {
         </div>
     );
     async function createEvent(){
-        // let startTime = start.getTime();
-        // let endTime = start.getTime();
-        // let web3;
-        // try{
-        //     web3 = await connector.getWeb3(window);
-        // }catch(err){
-        //     window.alert(err);
-        //     return;
-        // }
+        let startTime = start.getTime();
+        let endTime = start.getTime();
+        let web3;
+        try{
+            web3 = await connector.getWeb3(window);
+        }catch(err){
+            window.alert(err);
+            return;
+        }
 
-        // let abi = Abi;
+        let abi = Abi;
 
-        // // Retrieve the byte code
-        // let bytecode = Bytecode['object'];
+        // Retrieve the byte code
+        let bytecode = Bytecode['object'];
         
-        // // https://github.com/ethereum/web3.js/issues/2837#issuecomment-498838831
-        // let MyContract = new web3.eth.Contract(abi,undefined, {transactionConfirmationBlocks: 3});
+        let MyContract = new web3.eth.Contract(abi);
         
-        // const coinbase = await web3.eth.getCoinbase();
+        const coinbase = await web3.eth.getCoinbase();
 
-        // let result = await MyContract.deploy({
-        //         data: '0x'+bytecode,
-        //         arguments: ["0x6c1bfb2fb67dd71de2b9712f9025a4ddc578b06f", name,address,description,startTime,endTime,quota]
-        //     }).send({
-        //         from:coinbase
-        //     });
-        
-        // loading after that redirect
-        //console.log(result.options.address);
-            
-        // MyContract.deploy({
-        //     data: '0x'+bytecode,
-        //     arguments: ["0x6c1bfb2fb67dd71de2b9712f9025a4ddc578b06f", name,address,description,1,2,10]
-        // }).send({
-        //     from:coinbase
-        // },(err,res)=>{
-        //     console.log(err);
-        //     console.log(res);
-        // }).on('error', (error)=>{ console.log(error) })
-        // .on('transactionHash', (transactionHash)=>{ console.log(transactionHash) })
-        // .on('receipt', (receipt)=>{
-        //    console.log(receipt.contractAddress) // contains the new contract address
-        // })
-        // .on('confirmation', (confirmationNumber, receipt)=>{
-        //     console.log(confirmationNumber)
-        //     console.log(receipt)
-        //   })
-        // .then((newContractInstance)=>{
-        //     console.log(newContractInstance.options.address) // instance with the new contract address
-        // });
+        let result = await MyContract.deploy({
+                data: '0x'+bytecode,
+                arguments: ["0x6c1bfb2fb67dd71de2b9712f9025a4ddc578b06f", name,address,description,startTime,endTime,quota]
+            }).send({
+                from:coinbase
+            }).on('transactionHash', (transactionHash)=>{ console.log(transactionHash) })
+            .on('confirmation', (confirmationNumber, receipt)=>{
+                console.log(confirmationNumber)
+                console.log(receipt)
+            });;
+        let contractAddress = result.options.address;
 
         fetch(`${BASE_URL}/events`, {
             body: JSON.stringify({ 
-                publicAddress: 'string',
-                ownerAddress: description,
+                publicAddress: contractAddress,
+                ownerAddress: coinbase,
                 name: name,
-                description: address, // for nullable fields
+                description: description, 
                 location: address,
                 startDate: start,
                 endDate: end,
