@@ -1,0 +1,183 @@
+/* 
+
+Pricing Plans Styles
+
+#1. 
+#2. 
+#3. 
+#4. 
+#5. 
+#6. 
+
+
+*/
+
+
+/*
+
+#1.
+
+*/
+
+.pricing-plans {
+  background-color: #fff;
+}
+
+.pricing-plan + .pricing-plan {
+  border-left: 1px solid rgba(0,0,0,0.1);
+}
+
+.pricing-plan {
+  border-top: 1px solid rgba(0,0,0,0.1);
+  border-bottom: 1px solid rgba(0,0,0,0.1);
+  text-align: center;
+  padding-bottom: 20px;
+  background-color: #f9f9f9;
+  transition: all 0.2s ease;
+  &.with-hover-effect:hover, &.highlight {
+    box-shadow: 0px 0px 30px rgba(0,0,0,0.1);
+    position: relative;
+    z-index: 2;
+    box-shadow: 0 2px 30px 0 rgba(54,88,206,0.2);
+    .plan-price-w {
+      .price-value {
+        color: $brand-primary;
+      }
+    }
+    .plan-head {
+      box-shadow: inset 0px 5px 0px $brand-primary
+    }
+  }
+  &.with-hover-effect:hover {
+    .plan-name {
+      color: $body-color;
+    }
+  }
+  &.highlight {
+    margin-top: -20px;
+    margin-bottom: -20px;
+  }
+  .plan-image {
+    img {
+      width: 80px;
+    }
+  }
+  .plan-head {
+    background-color: #fff;
+    padding-top: 40px;
+  }
+  .plan-body {
+    background-color: #fff;
+  }
+  .plan-name {
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-size: $font-size-h4;
+    color: $brand-primary;
+    font-weight: $headings-font-weight;
+    font-family: $headings-font-family;
+    padding-bottom: 40px;
+    transition: all 0.2s ease;
+    border-bottom: 1px solid rgba(0,0,0,0.1);
+  }
+  .plan-image + .plan-name {
+    margin-top: 20px;
+  }
+  .plan-price-w {
+    padding-top: 40px;
+    .price-value {
+      font-size: $font-size-base * 4;
+      line-height: 1;
+      transition: all 0.2s ease;
+    }
+    .price-label {
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      color: rgba(0,0,0,0.3);
+      padding-top: 5px;
+      margin-top: 5px;
+      border-top: 1px solid rgba(0,0,0,0.1);
+      display: inline-block;
+    }
+    margin-bottom: 40px;
+  }
+  .plan-btn-w {
+    padding-bottom: 40px;
+    a.btn.btn-primary {
+
+    }
+  }
+  .plan-description {
+    text-align: left;
+    padding: 30px 15%;
+    border-top: 1px solid rgba(0,0,0,0.1);
+    color: rgba(0,0,0,0.5);
+    h6 {
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      margin-top: 30px;
+      font-size: $font-size-h6 * 0.9;
+    }
+    ul {
+      list-style: none;
+      padding-left: 30px;
+      margin-top: 20px;
+      li {
+        position: relative;
+        margin-bottom: 10px;
+        &:before {
+          content: '\e961';
+          color: $brand-primary;
+          @include osfont();
+          position: absolute;
+          left: -30px;
+          top: 5px;
+        }
+      }
+    }
+  }
+}
+
+
+
+
+/*
+
+#2.
+
+*/
+
+
+
+
+
+
+/*
+
+#3.
+
+*/
+
+
+
+
+
+
+
+/*
+
+#4.
+
+*/
+
+
+
+
+
+
+
+/*
+
+#5.
+
+*/

@@ -1,0 +1,152 @@
+.toggled-buttons {
+  .btn-toggled {
+    border: 2px solid $brand-primary;
+    border: 2px solid transparent;
+    border-radius: $global-border-radius;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-weight: $font-weight-bold;
+    font-size: $font-size-base * 0.8;
+    padding: 4px 8px;
+    color: rgba(0,0,0,0.3);
+    margin: 5px 0px;
+    &.off {
+    }
+    &.on, &:hover {
+      border-color: $brand-primary;
+      color: $brand-primary;
+    }
+    & + .btn-toggled {
+      margin-left: 10px;
+    }
+  }
+  &.solid {
+    .btn-toggled {
+      background-color: rgba(0,0,0,0.07);
+      color: rgba(0,0,0,0.6);
+      font-size: $font-size-base * 0.9;
+      &.on, &:hover {
+        background-color: $brand-primary;
+        color: #fff;
+      }
+    }
+  }
+}
+
+
+.btn-sm {
+  // line-height: ensure proper height of button next to small input
+  @include button-size($btn-padding-y-sm, $btn-padding-x-sm, $font-size-xs, $btn-border-radius-sm);
+  text-transform: uppercase;
+}
+
+
+.btn-white {
+  @include button-variant(#333, #fff, #fff);
+}
+
+.btn-grey {
+  @include button-variant(#464D6C, #E5E6EB, #E5E6EB);
+}
+
+.btn-white-gold {
+  @include button-variant(#CF8D0D, #fff, #fff);
+}
+
+
+.btn-teal {
+  @include button-variant(#fff, #31C37F, rgba(0,0,0,0));
+}
+
+.btn-link {
+  &.btn-danger {
+    color: $brand-danger;
+  }
+}
+
+
+.btn {
+  font-family: $font-family-alt;
+  font-weight: $font-alt-weight-normal;
+  outline: none;
+  line-height: 1;
+  &.btn-secondary:focus, &.btn-secondary.focus {
+    box-shadow: none;
+  }
+  .os-icon {
+    font-size: $font-size-base;
+    display: inline-block;
+    vertical-align: middle;
+  }
+  .os-icon + span {
+    margin-left: 10px;
+    display: inline-block;
+    vertical-align: middle;
+  }
+  span + .os-icon {
+    display: inline-block;
+    vertical-align: middle;
+    margin-left: 10px;
+  }
+  &.btn-white {
+    .os-icon {
+
+    }
+  }
+  &.btn-sm {
+    letter-spacing: 1px;
+    .os-icon {
+      font-size: 14px;
+    }
+    .os-icon + span {
+      margin-left: $btn-padding-x-sm;
+    }
+    span + .os-icon {
+      margin-left: $btn-padding-x-sm;
+    }
+  }
+  &.btn-rounded {
+    border-radius: 40px;
+  }
+  &.btn-upper {
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    line-height: 1;
+  }
+
+  &.btn-underlined {
+    background-color: transparent;
+    padding-left: 0px;
+    padding-right: 0px;
+    text-decoration: none;
+    span {
+      border-bottom: 2px solid $brand-primary;
+    }
+    i {
+      font-size: $font-size-base * 0.7;
+      transition: all 0.2s ease;
+    }
+    &:hover {
+      color: darken($brand-primary, 10%);
+      span {
+        border-color: darken($brand-primary, 10%);
+      }
+      i {
+        transform: translateX(5px);
+      }
+    }
+
+    &.btn-gold {
+      color: #BE8B1C;
+      span {
+        border-color: #BE8B1C;
+      }
+      &:hover {
+        color: darken(#BE8B1C, 10%);
+        span {
+          border-color: darken(#BE8B1C, 10%);
+        }
+      }
+    }
+  }
+}

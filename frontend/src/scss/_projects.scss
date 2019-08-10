@@ -1,0 +1,61 @@
+.projects-list {
+  margin-bottom: 2rem;
+  .project-box {
+    @extend .box-style;
+  }
+  .project-head {
+    padding: 20px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid rgba(0,0,0,0.1);
+    .project-title {
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      h5 {
+        margin-bottom: 0;
+      }
+    }
+    .project-users {
+      flex: 0 0 220px;
+      text-align: right;
+      .avatar {
+        width: 35px;
+        border-radius: 35px;
+        box-shadow: 0px 0px 0px 5px #fff;
+        display: inline-block;
+        overflow: hidden;
+        vertical-align: middle;
+        img {
+          height: auto;
+          width: 35px;
+        }
+      }
+      .more {
+        background-color: $brand-primary;
+        display: inline-block;
+        vertical-align: middle;
+        position: relative;
+        left: -10px;
+        padding: 2px 7px;
+        border-radius: 12px;
+        color: #fff;
+        font-size: $font-size-base * 0.7;
+      }
+    }
+  }
+  .project-info {
+    padding: 20px 40px;
+
+    .os-progress-bar {
+      margin-bottom: 0px; 
+    }
+
+    .os-progress-bar + .os-progress-bar {
+      margin-top: 1rem;
+    }
+  }
+  .project-box + .project-box {
+    margin-top: 2rem;
+  }
+}

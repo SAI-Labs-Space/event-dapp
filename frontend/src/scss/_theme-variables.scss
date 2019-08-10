@@ -1,0 +1,93 @@
+$content-bg: #f2f4f8;
+$content-panel-bg: #eceff6;
+$color-text-faded: rgba(90,99,126,0.49);
+$global-border-radius: 6px;
+$border-color: rgba(0,0,0,0.1);
+$element-box-shadow: 0px 2px 4px rgba(126, 142, 177, 0.12);
+$element-box-shadow-hover: 0px 5px 12px rgba(126, 142, 177, 0.2);
+
+// DARK COLOR SCHEME
+$dark-element-bg: #323c58;
+$dark-element-bg-to: #303950;
+$dark-content-bg: #293145;
+$dark-content-panel-bg: #293145;
+$dark-color-text-faded: rgba(255,255,255,0.49);
+$dark-border-color: rgba(255,255,255,0.05);
+$dark-element-box-shadow: 0px 5px 15px rgba(22, 22, 35, 0.1);
+$dark-element-box-shadow-hover: 0px 15px 25px rgba(22, 22, 35, 0.25);
+
+$dark-body-bg:       #293145 !default;
+$dark-body-color:    #ccd9e8 !default;
+$dark-body-color-faded:    #8596ab !default;
+$dark-link-color:    #b3bcde !default;
+
+$dark-headings-color: #fff;
+
+// Fonts
+
+$os-font-family-main: "Avenir Next W01", "Proxima Nova W01", "Rubik", -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif !default;
+$os-family-headings:  "Avenir Next W01", "Proxima Nova W01", "Rubik", -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif !default;
+$font-family-alt:     "Avenir Next W01", "Proxima Nova W01", "Rubik", -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif !default;
+
+$font-weight-light: 300;
+$os-font-weight-normal: 400;
+$os-font-weight-bold: 500;
+$os-headings-font-weight: 500;
+
+$font-alt-weight-light: $font-weight-light;
+$font-alt-weight-normal: $os-font-weight-normal;
+$font-alt-weight-bold: $os-font-weight-bold;
+
+$global-letter-spacing: 1px;
+
+
+// Menu Colors
+
+$menu-top-light-bg: #fff;
+$menu-top-dark-bg: #242B3F;
+
+// $menu-side-dark-bg: #1c4cc3;
+$menu-side-dark-bg: #323c58;
+$menu-side-dark-bg-to: #293145;
+$menu-side-light-bg: #fff;
+
+$menu-side-compact-dark-bg: #1c4cc3;
+$menu-side-compact-light-bg: #fff;
+$menu-side-compact-icon-color: #90acfb;
+
+$top-menu-secondary-light-bg: #fff;
+$top-menu-secondary-dark-bg: #1c4cc3;
+
+$menu-dark-icons-color: #6480e2;
+$menu-light-icons-color: #308af4;
+$menu-light-icons-color: #0073ff;
+$sub-menu-dark-bg-color: #0061da;
+
+$menu-side-width: 300px;
+$menu-side-compact-width: 90px;
+$mobile-menu-tablet-width: 70px;
+
+// Colors
+$dark-red: #9d1818;
+$highlight-accent: #FBB463;
+
+$body-color-light: #868686;
+
+// Extra custom Bootstrap Variables
+
+// Navs
+$nav-pills-link-padding-small: .2em 1.1em !default;
+$nav-tabs-link-padding-small: .7em 1.1em !default;
+
+
+// Tables
+$table-lg-cell-padding:         1.2rem 1.5rem !default;
+
+
+// Fancy Selector 
+$fancy-selector-bg-dark: #1e62eb;
+
+
+// Properties App Variables
+$filter-panel-width: 400px;
+$property-side-width: 400px;

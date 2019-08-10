@@ -1,0 +1,188 @@
+/*
+TABLE OF CONTENTS
+
+
+1. Theme Variables
+2. Theme Mixins
+3. Bootstrap Override Styles
+  3a. Override default includes of bootstrap
+  3b. Override bootstrap table styles
+  3c. Override bootstrap form styles
+  3d. Override bootstrap navigation styles
+  3e. Override bootstrap button styles
+  3f. Override bootstrap breadcrumbs styles
+  3g. Override bootstrap typography styles
+  3h. Override bootstrap modal styles
+  3i. Override bootstrap alerts styles
+4. Overrides for various plugins that are included with this template
+5. Handy Animations
+6. User Profiles
+7. Layout styles
+8. Menu styles
+9. Styles for all element blocks
+10. Helpful Misc Styles
+11. Icon Fonts
+12. Chat
+13. App - Email
+14. App - Projects
+15. App - Full Chat
+16. Pricing Plans
+17. Pipelines
+18. OS Dropdowns
+19. App - TODO
+20. Fancy Selector
+21. App - Rentals
+22. App - Support
+23. Onboarding
+##. Dark Color Scheme
+##. Responsive Styles
+
+*/
+/* 1. Theme Variables */
+@import "theme-variables";
+/* 2. Theme Mixins */
+@import "theme-mixins";
+/* 3. Bootstrap Override Styles */
+/* 3a. Override default includes of bootstrap */
+@import "bootstrap-override/bootstrap";
+/* 3b. Override bootstrap table styles */
+@import "bootstrap-override/tables";
+/* 3c. Override bootstrap form styles */
+@import "bootstrap-override/forms";
+/* 3d. Override bootstrap navigation styles */
+@import "bootstrap-override/nav";
+/* 3e. Override bootstrap button styles */
+@import "bootstrap-override/buttons";
+/* 3f. Override bootstrap breadcrumbs styles */
+@import "bootstrap-override/breadcrumb";
+/* 3g. Override bootstrap typography styles */
+@import "bootstrap-override/type";
+/* 3h. Override bootstrap modal styles */
+@import "bootstrap-override/modal";
+/* 3h. Override bootstrap popover styles */
+@import "bootstrap-override/popover";
+/* 3i. Override bootstrap alerts styles */
+@import "bootstrap-override/alerts";
+/* 3i. Override bootstrap badges styles */
+@import "bootstrap-override/badges";
+/* 4. Overrides for various plugins that are included with this template */
+@import "plugin-overrides";
+/* 5. Handy Animations  */
+@import "animations";
+/* 6. User Profile  */
+@import "user_profile";
+/* 7. Layout styles */
+@import "layout";
+/* 8. Menu styles */
+@import "menu";
+/* 9. Styles for all element blocks */
+@import "elements";
+/* 10. Helpful little styles */
+// @import "utilities";
+/* 11. Icon Fonts */
+// @import "osfont";
+/* 12. Chat */
+ //@import "chat";
+/* 13. App - Email */
+// @import "app_email";
+/* 14. App - Projects */
+// @import "projects";
+/* 15. App - Full Chat */
+// @import "full_chat";
+/* 16. Pricing Plans */
+// @import "pricing_plans";
+/* 17. Pipelines */
+// @import "pipelines";
+/* 18. Dropdowns */
+// @import "os_dropdowns";
+/* 19. App - TODO */
+// @import "todo";
+/* 20. Fancy Selector */
+// @import "fancy_selector";
+/* 21. App - Rentals */
+// @import "rentals";
+/* 22. App - Support */
+// @import "support";
+/* 23. Onboarding */
+// @import "onboarding";
+/* ##. Dark Color Scheme */
+@import "scheme_dark";
+/* ##. Responsive Styles */
+@import "responsive";
+
+.btn:disabled {
+  cursor: no-drop !important;
+}
+
+.form-control:disabled {
+  cursor: no-drop !important;
+}
+
+.btn {
+  cursor: pointer !important;
+}
+
+.main-menu > li > a {
+  cursor: pointer !important;
+}
+
+.modal-backdrop {
+  background-color: #333 !important;
+  opacity: 0.85 !important;
+}
+
+.modal-content {
+  box-shadow: none !important;
+  -webkit-box-shadow: none !important;
+  -moz-box-shadow: none !important;
+}
+
+.text-link {
+  color: lightskyblue !important;
+  text-decoration: underline !important;
+  cursor: pointer !important;
+}
+
+.label-force-center {
+  margin-top: 8px !important;
+}
+
+.color-danger {
+  color: red;
+}
+
+.dot {
+  height: 10px;
+  width: 10px;
+  background-color: #bbb;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.dot-active {
+  background-color: $btn-success-bg !important;
+}
+
+.dot-danger {
+  background-color: $alert-danger-bg !important;
+}
+
+.bold {
+  font-weight: bold !important;
+}
+
+.has-sub-menu > a::before {
+  display: none !important;
+}
+
+.event-banner {
+  font-size: 16px;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.can-click:hover {
+  cursor: pointer !important;
+}

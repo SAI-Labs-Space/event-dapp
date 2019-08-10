@@ -1,0 +1,19 @@
+.alert {
+  font-weight: $font-weight-light;
+  p:last-child {
+  	margin-bottom: 0px;
+  }
+  &.alert-warning {
+    .alert-heading {
+      color: #3E3221;
+    }
+  }
+  &.borderless {
+    border: none;
+  }
+
+  &.compact {
+  	padding: 15px 20px;
+  	font-size: $font-size-base * 0.8;
+  }
+}

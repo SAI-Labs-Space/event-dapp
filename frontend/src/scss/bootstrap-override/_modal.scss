@@ -1,0 +1,37 @@
+.modal-content {
+  box-shadow: $modal-content-sm-up-box-shadow;
+}
+.modal-footer {
+  &.buttons-on-left {
+    justify-content: flex-start;
+  }
+}
+.modal-header {
+  &.faded {
+    background-color: rgba(0,0,0,0.05);
+  }
+  &.smaller {
+    font-size: $font-size-base * 1.1;
+  }
+  span, strong, .avatar {
+    display: inline-block;
+    vertical-align: middle;
+  }
+  span {
+    color: #999;
+    margin-right: 5px;
+  }
+  .avatar {
+    border-radius: 50%;
+    width: 40px;
+    height: auto;
+  }
+  .avatar + span {
+    border-left: 1px solid rgba(0,0,0,0.1);
+    padding-left: 15px;
+    margin-left: 15px;
+  }
+}
+
+body.modal-open {
+}

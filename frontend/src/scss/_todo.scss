@@ -1,0 +1,610 @@
+/* 
+
+TODO Application
+
+#1. Sidebar
+#2. Main Content
+
+*/
+.todo-app-w {
+  display: flex;
+
+
+  /*
+  #1. Sidebar
+  */
+
+  .todo-sidebar {
+    flex: 0 0 350px;
+    background-color: #F9F9F9;
+    padding: 40px;
+    .todo-sidebar-section {
+      border-bottom: 1px solid rgba(0,0,0,0.1);
+      padding: 20px;
+      margin-bottom: 20px;
+      &:first-child {
+        padding-top: 0px;
+      }
+    }
+    .todo-sidebar-section-header {
+      color: $brand-primary;
+      position: relative;
+      span {
+        display: inline-block;
+        vertical-align: middle;
+      }
+      span + .os-icon {
+        display: inline-block;
+        vertical-align: middle;
+        margin-left: 10px;
+        font-size: 22px;
+        &.starred {
+          color: #E7AD10;
+        }
+        &.fire {
+          color: #ff1b1b;
+        }
+      }
+    }
+    .todo-sidebar-section-contents {
+      margin-top: 20px;
+    }
+    .todo-sidebar-section-toggle {
+      top: 50%;
+      transform: translateY(-50%);
+      left: -30px;
+      color: $brand-primary;
+      font-size: 16px;
+      position: absolute;
+      text-decoration: none;
+      &:hover {
+        color: darken($brand-primary, 20%);
+      }
+    }
+    ul {
+      margin-left: 0px;
+      padding-left: 30px;
+    }
+    ul.projects-list {
+      list-style: none;
+      font-size: $font-size-base * 1.1;
+      margin-bottom: 0px;
+      li {
+        position: relative;
+        margin-bottom: 10px;
+        &:before {
+          content: "\e981";
+          color: $brand-primary;
+          @include osfont();
+          font-size: 18px;
+          position: absolute;
+          left: -30px;
+          top: 50%;
+          transform: translateY(-50%);
+        }
+        a {
+          color: $body-color;
+          display: block;
+        }
+        &.add-new-project {
+          margin-top: 20px;
+          &:before {
+            content: "\e969";
+          }
+          a {
+            color: $brand-primary;
+            border-bottom: 1px solid $brand-primary;
+            display: inline-block;
+            font-size: $font-size-base * 1;
+            &:hover {
+              text-decoration: none;
+            }
+          }
+        }
+      }
+    }
+
+    ul.tasks-list {
+      list-style: none;
+      padding-left: 25px;
+      li {
+        position: relative;
+        margin-bottom: 10px;
+        strong {
+          color: $body-color;
+          display: block;
+        }
+        span {
+          color: rgba(0,0,0,0.4);
+          font-size: $font-size-base * 0.8;
+          display: inline-block;
+        }
+        &:before {
+          content: "";
+          width: 10px;
+          height: 10px;
+          position: absolute;
+          left: -25px;
+          top: 7px;
+          border-radius: 10px;
+        }
+        a {
+          color: $body-color;
+          display: block;
+        }
+        &.danger:before {
+          background-color: $state-danger-bg;
+        }
+        &.warning:before {
+          background-color: $state-warning-bg;
+        }
+        &.success:before {
+          background-color: $state-success-bg;
+        }
+      }
+    }
+
+    .todo-sidebar-section-sub-section {
+      padding-left: 30px;
+      position: relative;
+      margin-bottom: 15px;
+      .todo-sidebar-section-sub-section-toggler {
+        position: absolute;
+        z-index: 2;
+        top: 5px;
+        right: 0px;
+        font-size: 14px;
+        cursor: pointer;
+        i.os-icon.os-icon-ui-23 {
+        
+        }
+      }
+      .todo-sidebar-section-sub-header {
+        position: relative;
+        border-bottom: 1px solid rgba(0,0,0,0.05);
+        padding-bottom: 10px;
+        padding-top: 10px;
+        i.os-icon {
+          position: absolute;
+          top: 50%;
+          transform: translateY(-50%);
+          left: -30px;
+          font-size: 18px;
+          color: $brand-primary;
+        }
+        h6 {
+          text-transform: uppercase;
+          letter-spacing: 1px;
+          font-size: $font-size-base * 0.8;
+          margin: 0px;
+          color: $brand-primary;
+        }
+      }
+      .todo-sidebar-section-sub-section-content {
+        ul {
+          list-style: none;
+          padding: 10px 0px;
+          margin: 0px;
+          li {
+            padding: 3px 0px;
+            margin: 0px;
+            a {
+              color: $body-color;
+              display: inline-block;
+              font-size: $font-size-base;
+              line-height: 1.2;
+              height: $font-size-base * 1.2;
+              overflow: hidden;
+            }
+          }
+        }
+      }
+    }
+  }
+
+
+
+  /*
+  #2. Main Content
+  */
+  .todo-content {
+    background-color: #fff;
+    flex: 1;
+    padding: 40px;
+
+    .todo-content-header {
+      margin-bottom: 20px;
+      color: $brand-primary;
+      i {
+        margin-right: 10px;
+        font-size: 22px;
+        display: inline-block;
+        vertical-align: middle;
+      }
+      span {
+        display: inline-block;
+        vertical-align: middle;
+      }
+    }
+    .all-tasks-w {
+      padding: 20px 30px;
+    }
+    .tasks-header-w {
+      border-bottom: 1px solid rgba(0,0,0,0.1);
+      padding: 10px 0px;
+      position: relative;
+      margin-bottom: 30px;
+      margin-top: 20px;
+      .tasks-header-toggler {
+        position: absolute;
+        color: $brand-primary;
+        font-size: 18px;
+        position: absolute;
+        left: -30px;
+        top: 50%;
+        transform: translateY(-50%);
+        text-decoration: none;
+        &:hover {
+          color: darken($brand-primary, 20%);
+        }
+      }
+      .tasks-header {
+        display: inline-block;
+        margin-bottom: 0px;
+      }
+      .tasks-sub-header {
+        display: inline-block;
+        margin-left: 10px;
+        color: rgba(0,0,0,0.3);
+        font-size: $font-size-base * 0.9;
+      }
+      .add-task-btn {
+        float: right;
+        span, i {
+          display: inline-block;
+          vertical-align: middle;
+        }
+        span {
+          border-bottom: 1px solid $brand-primary;
+        }
+        i.os-icon {
+          margin-right: 5px;
+          font-size: 20px;
+        }
+      }
+    }
+    .tasks-list-header {
+      text-transform: uppercase;
+      color: $brand-primary;
+      letter-spacing: 1px;
+      font-size: $font-size-base * 0.9;
+      font-weight: $font-weight-bold;
+      margin-bottom: 5px;
+    }
+    .tasks-list {
+      font-size: $font-size-base * 1.2;
+      padding: 0px;
+      list-style: none;
+      border-radius: 4px;
+      margin-left: -10px;
+      padding: 5px 0px;
+      &.over {
+      }
+      li.draggable-task {
+        margin: 0px;
+        padding: 6px 40px;
+        position: relative;
+        border: 1px solid transparent;
+        .todo-task-drag {
+          color: #111;
+          position: absolute;
+          top: 9px;
+          left: -10px;
+          font-size: 8px;
+          cursor: move;
+          display: none;
+          padding: 5px;
+        }
+        .todo-task-media {
+          padding-top: 10px;
+          img {
+            display: inline-block;
+            border-radius: 4px;
+            height: 30px;
+            width: auto;
+            margin-right: 5px;
+          }
+        }
+        .todo-task-buttons {
+          position: absolute;
+          right: -10px;
+          top: 50%;
+          transform: translate(100%, -50%);
+          display: none;
+          a {
+            font-size: 18px;
+            display: inline-block;
+            position: relative;
+            vertical-align: middle;
+            text-decoration: none;
+            span {
+              position: absolute;
+              top: -28px;
+              left: 50%;
+              transform: translateX(-50%);
+              white-space: nowrap;
+              padding: 2px 8px;
+              border-radius: 4px;
+              background-color: #111;
+              color: #fff;
+              font-weight: $font-weight-bold;
+              font-size: $font-size-base * 0.8;
+              text-transform: uppercase;
+              letter-spacing: 1px;
+              visibility: hidden;
+              opacity: 0;
+              transition: all 0.2s ease;
+              display: inline-block;
+              vertical-align: middle;
+            }
+            &:hover {
+              text-decoration: none;
+              span {
+                transform: translate(-50%, 8px);
+                visibility: visible;
+                opacity: 1;
+              }
+            }
+          }
+          a + a{
+            margin-left: 8px;
+          }
+          .task-btn-done {
+            color: #4d9121;
+          }
+          .task-btn-edit {
+            color: $brand-primary;
+          }
+          .task-btn-delete {
+            color: $brand-danger;
+          }
+          .task-btn-star {
+            color: #c89302;
+          }
+        }
+        .todo-task {
+          position: relative;
+          display: inline-block;
+          span {
+            outline: none;
+          }
+        }
+        &:hover {
+          .todo-task-drag, .todo-task-buttons {
+            display: block;
+          }
+        }
+        &:before {
+          content: "";
+          width: 8px;
+          height: 8px;
+          border-radius: 10px;
+          background-color: #e1e1e1;
+          position: absolute;
+          left: 20px;
+          top: 15px;
+        }
+        &.favorite {
+          background-color: #fffaea;
+          border-radius: 6px;
+          &:before {
+            // box-shadow: 0px 0px 0px 5px #FFF178;
+          }
+        }
+        &.gu-transit {
+          // border: 1px dashed rgba(0,0,0,0.6);
+          opacity: 0.8;
+          border-radius: 4px;
+          background-color: rgba(0,0,0,0.05);
+        }
+        &.pre-removed {
+          background-color: #fff5f5;
+          border-radius: 6px;
+          .todo-task {
+            opacity: 0.3;
+          }
+          .task-btn-undelete {
+            position: absolute;
+            right: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: $brand-danger;
+            color: #fff;
+            font-weight: $font-weight-bold;
+            font-size: $font-size-base * 0.8;
+            padding: 1px 10px;
+            border-radius: 10px;
+            text-decoration: none;
+            &:hover {
+              background-color: #111;
+              text-decoration: none;
+            }
+          }
+
+          .todo-task-drag, .todo-task-buttons {
+            display: none !important;
+          }
+        }
+        &.complete {
+          color: #999;
+          .todo-task {
+            text-decoration: line-through;
+          }
+          &:before {
+            background-color: #e1e1e1!important;
+          }
+        }
+        &.danger {
+          &:before {
+            background-color: $brand-danger;
+          }
+        }
+        &.warning {
+          &:before {
+            background-color: $brand-warning;
+          }
+        }
+        &.success {
+          &:before {
+            background-color: $brand-success;
+          }
+        }
+      }
+    }
+  }
+}
+
+// Dragged task item
+.draggable-task.gu-mirror {
+  list-style: none;
+  padding: 10px 40px;
+  background-color: #fff;
+  box-shadow: 0px 4px 15px rgba(0,0,0,0.1);
+  margin: 0px;
+  font-size: $font-size-base * 1.2;
+  position: relative;
+  border-radius: 4px;
+  .todo-task-drag {
+    color: #111;
+    position: absolute;
+    top: 50%;
+    left: -10px;
+    font-size: 8px;
+    transform: translateY(-50%);
+    cursor: move;
+    padding: 5px;
+  }
+  .todo-task-buttons {
+    display: none;
+  }
+  .todo-task-media {
+    padding-top: 10px;
+    img {
+      display: inline-block;
+      border-radius: 4px;
+      height: 30px;
+      width: auto;
+      margin-right: 5px;
+    }
+  }
+}
+
+// Task edit lightbox
+.attached-media-w {
+  img {
+    display: inline-block;
+    border-radius: 4px;
+    height: 30px;
+    width: auto;
+    margin-right: 5px;
+  }
+  .attach-media-btn {
+    display: inline-block;
+    margin-left: 10px;
+    span, i {
+      display: inline-block;
+      vertical-align: middle;
+    }
+    span {
+      border-bottom: 1px solid $brand-primary;
+    }
+    i.os-icon {
+      margin-right: 5px;
+      font-size: 18px;
+    }
+  }
+}
+
+.color-scheme-dark {
+.todo-app-w {
+  .todo-sidebar {
+    background-color: $dark-content-bg;
+    ul.tasks-list {
+      li {
+        strong {
+          color: $dark-body-color;
+        }
+        span {
+          @include text-faded-dark();
+        }
+      }
+    }
+    .todo-sidebar-section {
+      border-bottom: 1px solid $dark-border-color;
+    }
+    ul.projects-list li a {
+      color: $dark-body-color;
+    }
+
+    .todo-sidebar-section-sub-section {
+      .todo-sidebar-section-sub-header {
+        border-bottom: 1px solid rgba(255,255,255,0.05);
+      }
+      .todo-sidebar-section-sub-section-content {
+        ul {
+          li {
+            a {
+              color: $dark-body-color;
+            }
+          }
+        }
+      }
+    }
+  }
+  .todo-content .tasks-list li.draggable-task.pre-removed {
+    background-color: $state-danger-bg;
+    color: $state-danger-text;
+    .todo-task {
+      opacity: 0.7;
+    }
+    span {
+      color: $state-danger-text;
+    }
+  }
+  .todo-content {
+    background-color: $dark-element-bg;
+
+    .tasks-header-w {
+      border-bottom-color: $dark-border-color;
+      .tasks-sub-header {
+        @include text-faded-dark();
+      }
+    }
+    .tasks-list {
+      &.over {
+      }
+      li.draggable-task {
+        .todo-task-buttons .task-btn-done {
+          color: #55bf10
+        }
+
+        &.favorite {
+          background-color: #efe67b;
+          color: #383314;
+        }
+
+        .todo-task-drag {
+          color: #fff;
+        }
+
+        &.complete {
+          @include text-faded-dark();
+          &:before {
+            background-color: lighten($dark-element-bg, 10%)!important;
+          }
+        }
+      }
+    }
+  }
+}
+}

@@ -1,0 +1,92 @@
+@keyframes fadeLeft {
+  0% {
+    opacity: 0;
+    transform: translateX(50px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0px);
+  }
+}
+
+@keyframes fadeRight {
+  0% {
+    opacity: 0;
+    transform: translateX(-50px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0px);
+  }
+}
+
+@keyframes fadeUp {
+  0% {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0px);
+  }
+}
+
+@keyframes jumpUp {
+  0% {
+    transform: scale(0.5) translate(70px, 70px);
+  }
+  80% {
+    transform: scale(1.1) translate(-10px, -10px);
+  }
+  100% {
+    transform: scale(1) translate(0px);
+  }
+}
+
+
+.floated-chat-btn {
+  animation-name: jumpUp;
+  animation-duration: 0.5s;
+}
+
+
+.element-box {
+  animation-name: fadeUp;
+  animation-duration: 1s;
+}
+
+.element-balances .balance {
+  animation-name: fadeRight;
+  animation-duration: 0.5s;
+  animation-fill-mode: both;
+  &:nth-child(1) { animation-delay: 0s; }
+  &:nth-child(2) { animation-delay: 0.1s; }
+  &:nth-child(3) { animation-delay: 0.2s; }
+  &:nth-child(4) { animation-delay: 0.3s; }
+  &:nth-child(5) { animation-delay: 0.4s; }
+}
+
+.pipeline {
+  animation-name: fadeUp;
+  animation-duration: 1s;
+}
+
+.project-box {
+  animation-name: fadeUp;
+  animation-duration: 1s;
+}
+
+.aec-full-message-w {
+  animation-name: fadeUp;
+  animation-duration: 1s;
+}
+
+.user-profile {
+  animation-name: fadeUp;
+  animation-duration: 1s;
+}
+
+.content-panel {
+  animation-name: fadeLeft;
+  animation-duration: 1s;
+}

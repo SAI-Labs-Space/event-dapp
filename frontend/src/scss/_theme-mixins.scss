@@ -1,0 +1,56 @@
+@mixin big-value-font{
+
+}
+
+@mixin text-small-caps {
+  font-size: $font-size-base * 0.7;
+  text-transform: uppercase;
+}
+
+@mixin text-med-caps {
+  font-size: $font-size-base * 0.8;
+  text-transform: uppercase;
+  font-weight: $font-weight-bold;
+  letter-spacing: 1px;
+}
+
+@mixin text-faded {
+  color: rgba(0,0,0,0.4);
+}
+@mixin text-faded-dark {
+  color: rgba(218, 226, 243, 0.4);
+}
+
+
+@mixin osfont{
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'osfont' !important;
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+// Badges
+
+@mixin badge-variant-inverted($color) {
+  background-color: lighten(saturate(mix($color, #fff), 10%), 15%);
+  border: 1px solid darken($color, 10%);
+  color: darken($color, 15%);
+  font-weight: $font-weight-light;
+
+  &[href] {
+    @include hover-focus {
+      background-color: lighten(saturate(mix($color, #fff), 10%), 5%);
+      border: 1px solid darken($color, 20%);
+      color: darken($color, 15%);
+      font-weight: $font-weight-light;
+    }
+  }
+}

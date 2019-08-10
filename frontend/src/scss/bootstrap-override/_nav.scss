@@ -1,0 +1,163 @@
+// Base class
+//
+// Kickstart any navigation component with a set of style resets. Works with
+// `<nav>`s or `<ul>`s.
+
+.nav {
+  &.smaller {
+    font-size: $font-size-base * 0.8;
+    &.nav-tabs .nav-link {
+      padding: $nav-tabs-link-padding-small
+    }
+    &.nav-pills .nav-link {
+      padding: $nav-pills-link-padding-small;
+    }
+  }
+  &.bigger {
+    font-size: $font-size-h5;
+    font-family: $headings-font-family;
+    font-weight: $headings-font-weight;
+    &.nav-tabs .nav-link.active:after, 
+    &.nav-tabs .nav-item.show .nav-link:after {
+      height: 6px;
+      bottom: -3px;
+      border-radius: 2px;
+    }
+    &.nav-tabs .nav-link {
+      padding-left: 0px;
+      padding-right: 0px;
+      margin-right: 2rem;
+    }
+    &.nav-pills .nav-link {
+    }
+  }
+  &.upper {
+    font-size: $font-size-base;
+    font-family: $headings-font-family;
+    font-weight: $headings-font-weight;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    &.nav-tabs .nav-link.active:after, 
+    &.nav-tabs .nav-item.show .nav-link:after {
+      height: 3px;
+      bottom: -2px;
+      border-radius: 2px;
+    }
+    &.nav-tabs .nav-link {
+      padding-left: 0px;
+      padding-right: 0px;
+      padding-bottom: 15px;
+      margin-right: 2rem;
+    }
+    &.nav-pills .nav-link {
+    }
+    &.centered {
+      &.nav-tabs .nav-link {
+        padding-left: 0px;
+        padding-right: 0px;
+        padding-bottom: 15px;
+        margin-left: 1rem;
+        margin-right: 1rem;
+      }
+      &.nav-tabs .nav-item {
+        margin-right: 0px;
+      }
+    }
+  }
+  &.centered {
+    text-align: center;
+    justify-content: space-around;
+  }
+}
+
+.nav-link {
+  // Disabled state lightens text and removes hover/tab effects
+  &.disabled {
+  }
+  i {
+    display: inline-block;
+    color: #b0c4f3;
+    font-size: 26px;
+    margin-bottom: 5px;
+  }
+  span {
+    display: block;
+    font-size: $font-size-base * 0.8;
+  }
+  &.active {
+    i {
+      color: $brand-primary;
+    }
+  }
+}
+
+
+//
+// Tabs
+//
+
+.nav-tabs {
+  .nav-item {
+    margin-bottom: 0px; 
+    margin-right: 1rem;
+  }
+
+  .nav-link {
+    border: none;
+    color: rgba(0,0,0,0.3);
+    &.disabled {
+      color: $nav-disabled-link-color;
+      background-color: transparent;
+      border-color: transparent;
+    }
+  }
+
+  .nav-link,
+  .nav-item .nav-link {
+    transition: all 0.2s ease;
+    position: relative;
+    &:after {
+      content: "";
+      width: 0%;
+      height: 3px;
+      background-color: $brand-primary;
+      position: absolute;
+      bottom: -2px;
+      left: 50%;
+      transform: translateX(-50%);
+      transition: all 0.2s ease;
+    }
+  }
+
+  .nav-link.active,
+  .nav-item.show .nav-link, 
+  .nav-link:hover,
+  .nav-item:hover .nav-link{
+    color: $nav-tabs-active-link-hover-color;
+    background-color: $nav-tabs-active-link-hover-bg;
+    border-color: $nav-tabs-active-link-hover-border-color $nav-tabs-active-link-hover-border-color $nav-tabs-active-link-hover-bg;
+    position: relative;
+    &:after {
+      width: 100%;
+    }
+  }
+}
+
+
+//
+// Pills
+//
+
+.nav-pills {
+  .nav-link {
+    @include border-radius($nav-pills-border-radius);
+    color: rgba(0,0,0,0.4);
+  }
+
+  .nav-link.active,
+  .nav-item.show .nav-link {
+    color: $nav-pills-active-link-color;
+    cursor: default;
+    background-color: $nav-pills-active-link-bg;
+  }
+}

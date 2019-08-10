@@ -1,0 +1,1219 @@
+/* 
+
+Contents: 
+
+#1.  Screen size <= 1650px
+#2.  Screen size <= 1550px
+#3.  Screen size <= 1400px
+#4.  Screen size <= 1350px
+#5.  Screen size between 1100px - 1350px
+#6.  Screen size <= 1250px
+#7.  Screen size <= 1150px
+#8.  Tablets and phones  (< 1024px)
+#9.  Tablets (768px - 1024px)
+#10. Phones & Vertical Tablets (<= 768px)
+#11. Phones (< 767px)
+#12. Screen Height >= 700px
+
+
+*/
+
+
+
+
+
+/* #1.  Screen size <= 1650px */
+@media (max-width: 1650px){
+  body,
+  body.auth-wrapper .all-wrapper {
+    padding: 40px;
+  }
+  .content-panel {
+    padding: 2rem;  
+    width: 350px;
+  }
+  .content-box {
+    padding: 2rem;
+  }
+  body.with-content-panel .content-box {
+    padding-left: 4rem;
+  }
+  .all-wrapper {
+    max-width: 100%;
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+/* #2.  Screen size <= 1550px */
+@media (max-width: 1550px){
+  body,
+  body.auth-wrapper .all-wrapper {
+    padding: 20px;
+  }
+  .menu-side-w ul.main-menu {
+    padding: 1.5rem 1rem;
+  }
+  .menu-side-w ul.main-menu > li .icon-w {
+    padding-left: 1rem;
+    width: 75px;
+  }
+  .menu-side-w ul.sub-menu {
+    padding-left: 37px;
+  }
+  .menu-side-w {
+    width: 260px;
+    .logged-user-menu {
+      ul {
+        padding-left: 30px;
+        padding-right: 30px;
+      }
+    }
+  }
+  .support-index .support-ticket-content-w .ticket-reply .ticket-reply-info .badge {
+    position: absolute;
+    top: -10px;
+    right: 0px;
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+/* #3.  Screen size <= 1400px */
+@media (max-width: 1400px){
+  .menu-side-w ul.main-menu > li .icon-w {
+    padding-left: 10px;
+    width: 65px;
+  }
+  .menu-side-w {
+    width: 230px;
+    .side-menu-magic {
+      padding: 30px 20px;
+    }
+    .logged-user-menu {
+      ul {
+        padding-left: 15px;
+        padding-right: 15px;
+      }
+    }
+  }
+  .menu-side-w ul.sub-menu {
+    padding-left: 30px;
+  }
+  .menu-top-image-w ul.main-menu > li .icon-w {
+    padding-left: 20px;
+  }
+  .menu-top-image-w ul.main-menu > li span {
+    padding-right: 20px;
+  }
+  .full-chat-w .chat-content-w .chat-message .chat-message-content {
+    max-width: 320px;
+  }
+
+  // Support Service Rules
+  .support-index .support-ticket-content-w .ticket-reply .ticket-reply-content {
+    margin-left: 0px;
+  }
+  .support-index .support-ticket-content-w .support-ticket-content {
+    padding-right: 30px;
+    padding-left: 20px;
+  }
+  .support-index .support-ticket-content-w.folded-info .support-ticket-content {
+    padding-right: 20px;
+  }
+  .support-index .support-tickets {
+    flex: 0 0 400px;
+  }
+  .support-index .st-foot {
+    font-size: $font-size-base * 0.8;
+  }
+  .support-index .st-foot .value + .label {
+    margin-left: 10px;
+  }
+  .support-index .support-tickets {
+    margin-right: 15px;
+    padding-right: 15px;
+  }
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* #4.  Screen size <= 1350px */
+@media (max-width: 1350px){
+  .top-menu-secondary {
+    .fs-extra-info {
+      display: none;
+    }
+  }
+  .menu-side-w .logo-w {
+    padding: 1.5rem 1rem;
+  }
+  .menu-top-w .menu-top-i .logo-w {
+    padding: 0rem 1rem;
+    width: 50px;
+  }
+  .menu-top-w .menu-top-i ul.main-menu {
+    padding-left: 0px;
+  }
+  .support-index .support-tickets {
+    flex: 0 0 390px;
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+/* #5.  Screen size between 1100px - 1350px */
+@media (min-width: 1100px) and (max-width: 1350px){
+  .content-panel {
+    width: 300px;
+    padding: 1.5rem;
+  }
+  .padded {
+    padding: 0.5rem 1rem;
+  }
+  .content-w {
+  }
+  .content-box {
+    padding: 1.5rem;
+  }
+
+  body.with-content-panel {
+    .content-box {
+      padding-left: 3rem;
+    }
+  }
+  .activity-boxes-w {
+    .activity-avatar {
+      margin-right: 1rem;
+      width: 40px;
+    }
+    .activity-time {
+      flex: 0 0 90px;
+    }
+    .activity-box-w:before {
+      left: 65px;
+    }
+    .activity-box-w:after {
+      left: 70px;
+    }
+  }
+  .profile-tile {
+    .profile-tile-box {
+      width: 95px;
+    }
+    .pt-avatar-w img {
+      width: 50px;
+    }
+    .profile-tile-meta {
+      padding-left: 15px;
+    }
+  }
+  .content-i {
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* #6.  Screen size <= 1250px */
+@media (max-width: 1250px){
+  .element-box, .invoice-w, .big-error-w {
+    padding: 1rem 1.5rem;
+  }
+  .element-box .os-tabs-controls, .invoice-w .os-tabs-controls, .big-error-w .os-tabs-controls {
+    margin-left: -1.5rem;
+    margin-right: -1.5rem;
+  }
+  body,
+  body.auth-wrapper .all-wrapper {
+    padding: 0px;
+  }
+  .content-w,
+  .menu-side-w,
+  .all-wrapper {
+    border-radius: 0px!important;
+    overflow: hidden;
+  }
+  .menu-side-w .logged-user-menu {
+    left: 0px;
+    right: 0px;
+  }
+
+  .support-index .support-ticket-content-w .support-ticket-info {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    width: 250px;
+    box-shadow: 0px 20px 60px rgba($brand-primary,0.3);
+    background-color: #fff;
+    background-image: none;
+    display: none;
+  }
+
+  .support-index .support-ticket-content-w .support-ticket-content .show-ticket-info {
+    display: block;
+  }
+  .support-index .support-ticket-content-w.force-show-folded-info .support-ticket-info {
+    display: block;
+  }
+
+
+  .support-index .support-ticket-content-w .support-ticket-content {
+    padding-right: 20px;
+    padding-left: 20px;
+  }
+  .support-index .support-ticket-content-w.folded-info .support-ticket-content {
+    padding: 10px 20px;
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* #7.  Screen size <= 1150px */
+@media (max-width: 1150px){
+  .all-wrapper {
+  }
+
+  body.with-content-panel {
+    .content-box {
+      padding-left: 1.5rem;
+    }
+  }
+  .ae-content {
+    padding: 0px;
+  }
+  .aec-full-message-w {
+    margin-bottom: 0px;
+  }
+  .ae-content-w {
+    background-image: none;
+    background-color: #fff;
+  }
+  .aec-full-message-w .more-messages {
+    top: -32px;
+    background-color: #fff;
+    padding: 3px 5px;
+    border-radius: 4px;
+    color: $brand-primary;
+  }
+  .ae-list-w {
+    flex: 0 0 300px;
+  }
+  .ae-list-w .ae-list .aei-image {
+    display: none;
+  }
+  .layout-w {
+    transition: all 0.6s ease;
+  }
+  .content-box {
+    &:after {
+      display: block;
+      position: absolute;
+      top: 0px;
+      left: 0px;
+      right: 0px;
+      bottom: 0px;
+      background: rgba(4,36,113,0.60);
+      content: "";
+      z-index: 10;
+      visibility: hidden;
+      opacity: 0;
+      transition: all 0.4s ease;
+    }
+  }
+  .content-panel {
+    position: absolute;
+    top: 0px;
+    bottom: 0px;
+    right: 0px;
+    background-color: #fff;
+    background-image: linear-gradient(-90deg, #EFF2F9 8%, #fff 90%);
+    z-index: 4;
+    border: none;
+    transform: translateX(100%);
+    transition: all 0.6s ease;
+    visibility: hidden;
+    z-index: 11;
+    .content-panel-close {
+      display: block;
+    }
+  }
+
+  body.color-scheme-dark {
+    .content-panel {
+      background-color: $dark-content-panel-bg;
+      background-image: linear-gradient(-90deg, $dark-content-panel-bg, $dark-content-panel-bg);
+    }
+  }
+  .content-panel-toggler {
+    display: block;
+  }
+  .content-i, .with-side-panel .content-i {
+    display: block;
+    .content-box {
+      display: block;
+    }
+  }
+  .content-panel-active {
+    .content-panel {
+      transform: translateX(80px);
+      visibility: visible;
+      box-shadow: 0 2px 80px 0 rgba(0,0,0,0.4);
+    }
+    .layout-w {
+      transform: translateX(-80px);
+    }
+    .content-box:after {
+      opacity: 1;
+      visibility: visible;
+    }
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+/* #8.  Tablets and phones  (< 1024px) */
+@media (max-width: 1024px){
+  .invoice-w {
+    padding: 50px;
+  }
+  .ae-list-w {
+    flex: 0 0 230px;
+  }
+  .ae-list-w .ae-list .ae-item {
+    padding: 15px;
+  }
+  .table th, .table td {
+    padding: 0.7rem 0.5rem;
+  }
+  .content-w {
+    border-radius: 0px!important;
+  }
+
+  .desktop-menu {
+    display: none;
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* #9.  Tablets (768px - 1024px) */
+@media (min-width: 768px) and (max-width: 1024px){
+
+  // Top Secondary Menu
+
+  .top-menu-secondary {
+    .logo-w {
+      display: none;
+    }
+    .fs-extra-info {
+      display: none;
+    }
+  }
+
+
+  // Element Wrapper
+  .element-wrapper {
+    padding-bottom: 2rem;
+  }
+
+
+  // Element Balances
+  .element-balances {
+    justify-content: space-between;
+  }
+
+
+  // FULL CHAT
+  .full-chat-w {
+    .full-chat-right {
+      display: none;
+    }
+    .chat-content-w .chat-content {
+      padding: 30px;
+    }
+  }
+
+  .top-menu-secondary {
+    overflow: scroll;
+    padding: 0px;
+    > ul {
+      white-space: nowrap;
+      li a {
+        padding: 15px 10px;
+        margin: 0px 10px;
+      }
+    }
+    &.with-overflow {
+      overflow: visible;
+    }
+  }
+  .nav.upper.nav-tabs .nav-link {
+    margin-right: 0.7rem;
+    padding-bottom: 10px;
+    font-size: $font-size-base * 0.8;
+  }
+
+  .display-type {
+    content: "tablet";
+  }
+  .content-box {
+    padding: 1.5rem;
+  }
+  .padded {
+    padding: 0.3rem 0.8rem;
+  }
+  .element-box, .invoice-w, .big-error-w {
+    padding: 1rem 1rem;
+  }
+  .element-box .os-tabs-controls, .invoice-w .os-tabs-controls, .big-error-w .os-tabs-controls {
+    margin-left: -1rem;
+    margin-right: -1rem;
+  }
+  .layout-w {
+    display: table;
+    table-layout: fixed;
+    width: 100%;
+  }
+  .content-w {
+    display: table-cell;
+  }
+  .menu-mobile {
+    width: $mobile-menu-tablet-width;
+    display: table-cell;
+    .menu-and-user {
+      display: block;
+    }
+    ul.sub-menu {
+      padding: 1rem 1.5rem;
+    }
+    .mobile-menu-magic {
+      display: none;
+    }
+    .logged-user-w {
+      padding: 1rem;
+      text-align: center;
+      .avatar-w img {
+        width: 35px;
+      }
+      .logged-user-info-w {
+        display: none;
+      }
+    }
+    ul.main-menu {
+      padding: 1rem 0px;
+      & > li.has-sub-menu > a:before {
+        display: none;
+      }
+    }
+    .mm-logo-buttons-w {
+      text-align: center;
+      justify-content: center;
+      .mm-buttons {
+        display: none;
+      }
+      .mm-logo {
+        display: block;
+        text-align: center;
+        span {
+          display: none;
+        }
+      }
+    }
+    &.color-scheme-dark {
+      ul.main-menu > li > a > span {
+        color: rgba(255,255,255,0.2);
+      }
+      ul.sub-menu {
+        background-color: $sub-menu-dark-bg-color;
+        &:before {
+          border-right-color: #203c9b;
+        }
+      }
+    }
+  }
+
+  .menu-mobile ul.main-menu > li > a > span {
+    position: absolute;
+    top: 10px;
+    left: $mobile-menu-tablet-width + 20px;
+    color: rgba(0,0,0,0.2);
+    font-size: $font-size-base * 1.7;
+    font-weight: $font-weight-bold;
+    display: none;
+    white-space: nowrap;
+    z-index: 1000;
+    padding: 0px;
+  }
+  .menu-mobile {
+    ul.main-menu li {
+      position: relative;
+    }
+    ul.main-menu > li {
+      .icon-w {
+        padding: 20px 5px;
+      }
+    }
+    ul.sub-menu {
+      position: absolute;
+      top: 0px;
+      left: $mobile-menu-tablet-width;
+      background-color: #fff;
+      min-width: 220px;
+      z-index: 999;
+      list-style: none;
+      padding: 20px 15px;
+      padding-top: 50px;
+      box-shadow: 0px 5px 30px rgba(0,0,0,0.1);
+      li {
+        padding: 10px 10px;
+      }
+    }
+  }
+
+  .menu-mobile .main-menu {
+    li > a:hover > span {
+      display: block;
+    }
+  }
+  .menu-mobile .has-sub-menu.active {
+    .icon-w {
+      color: $body-color;
+    }
+    .sub-menu {
+      display: block;
+    }
+  }
+
+  // USER PROFILE
+  .user-profile {
+    .up-header {
+      font-size: $font-size-h1;
+    }
+    .up-sub-header {
+      font-size: $font-size-h6;
+    }
+  }
+
+  // TODO APP
+  .todo-app-w {
+    .todo-sidebar {
+      padding: 30px;
+      flex: 0 0 280px;
+      .todo-sidebar-section {
+        padding: 10px;
+      }
+    }
+    .todo-content {
+      padding: 30px;
+    }
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* #10. Phones & Vertical Tablets (<= 768px) */
+@media (max-width: 768px){
+  // TODO APP
+  .todo-app-w {
+    .todo-sidebar {
+      padding: 30px 20px 20px 45px;
+      .todo-sidebar-section {
+        padding: 10px 0px;
+      }
+      .todo-sidebar-section-toggle {
+        left: -22px;
+      }
+      .todo-sidebar-section-header {
+        font-size: $font-size-h5;
+      }
+      .todo-sidebar-section-sub-section, ul.projects-list {
+        padding-left: 10px;
+      }
+    }
+    .todo-content {
+      padding: 30px;
+      .all-tasks-w {
+        padding-left: 5px;
+      }
+      .tasks-header-w {
+        padding-left: 20px;
+        .tasks-header-toggler {
+          left: -5px;
+        }
+      }
+      .todo-content-header {
+        font-size: $font-size-h5;
+      }
+      .all-tasks-w {
+        padding-top: 0px;
+        padding-right: 0px;
+      }
+      .tasks-list li.draggable-task {
+        padding-right: 10px;
+      }
+    }
+  }
+
+  // Support tickets
+  .support-index .support-tickets {
+    flex: 0 0 100%;
+    margin-right: 0px;
+    padding-right: 0px;
+    border-right: 0px;
+  }
+  .support-index .support-ticket-content-w {
+    display: none;
+  }
+
+  .support-index {
+    .support-ticket-content-w .support-ticket-content {
+      padding: 10px 5px;
+    }
+    .support-ticket-content-w.folded-info .support-ticket-content {
+      padding: 10px 5px;
+    }
+    &.show-ticket-content {
+      position: relative;
+      .support-ticket-content-w {
+        display: block;
+        flex: 1;
+      }
+      .support-tickets {
+        display: none;
+      }
+      .support-ticket-content-w .support-ticket-content .back-to-index {
+        display: block;
+        position: absolute;
+        top: 0px;
+        left: 10px;
+      }
+      .support-ticket-content-w .support-ticket-content .show-ticket-info {
+        position: absolute;
+        top: 0px;
+        right: 10px;
+      }
+    }
+  }
+  .support-index .support-ticket-content-w .support-ticket-content .support-ticket-content-header {
+    flex-direction: column;
+    padding-top: 0px;
+    padding-top: 20px;
+    .show-ticket-info {
+      padding-top: 0px;
+    }
+    .ticket-header {
+      padding-top: 20px;
+      border-top: 1px solid rgba(0,0,0,0.07);
+    }
+  }
+}
+
+
+
+
+/* #11. Phones (< 767px) */
+@media (max-width: 767px){
+
+
+  // Onboarding 
+
+  .onboarding-modal .onboarding-content.with-gradient {
+    padding-left: 25px;
+    padding-right: 25px;
+    padding-top: 50px;
+  }
+  .onboarding-modal .onboarding-content .onboarding-text {
+    font-size: $font-size-base;
+    padding-left: 0px;
+    padding-right: 0px;
+  }
+  .onboarding-modal .onboarding-slide .onboarding-side-by-side .onboarding-media {
+    padding-bottom: 0px;
+  }
+  .onboarding-modal .onboarding-slide .onboarding-side-by-side .onboarding-content.with-gradient {
+    padding-bottom: 70px;
+  }
+  .onboarding-modal .onboarding-side-by-side {
+    flex-wrap: wrap;
+    .onboarding-media {
+      flex: 1;
+      padding-bottom: 0px;
+      padding-top: 20px;
+    }
+    .onboarding-content{
+
+      &.with-gradient {
+        background-image: url(./img/onboarding-gradient-hor.png);
+        background-position: top center;
+        padding: 40px 20px;
+      }
+    }
+  }
+
+  .hidden-mobile {
+    display: none!important;
+  }
+
+  // SUPPORT TICKETS
+
+  .support-index .st-foot {
+    padding: 10px 10px;
+  }
+  .support-index .support-ticket + .support-ticket {
+    margin-top: 15px;
+  }
+
+  // Secondary Top Menu
+  
+  .top-menu-secondary {
+    .logo-w {
+      display: none;
+    }
+    &.with-overflow {
+      flex-direction: column-reverse;
+      .top-menu-controls {
+        display: none;
+      }
+    }
+    .fs-extra-info {
+      display: none;
+    }
+  }
+
+  // Element Balances
+  .element-balances {
+    flex-wrap: wrap;
+    .balance {
+      border: none!important;
+    }
+  }
+
+  .cell-with-media {
+    text-align: center;
+    img {
+      margin-bottom: 5px;
+      & + span {
+        margin-left: 0px!important;
+      }
+    }
+  }
+
+  .element-wrapper {
+    .element-actions {
+      float: none;
+      margin-bottom: 20px;
+    }
+  }
+
+
+  // TODO APP
+  .todo-app-w {
+    display: block;
+    .todo-sidebar {
+      padding: 30px 15px 20px 40px;
+      flex: 1;
+      .todo-sidebar-section {
+        padding: 10px 0px;
+      }
+      .todo-sidebar-section-toggle {
+        left: -22px;
+      }
+      .todo-sidebar-section-header {
+        font-size: $font-size-h5;
+      }
+      .todo-sidebar-section-sub-section, ul.projects-list {
+        padding-left: 10px;
+      }
+    }
+    .todo-content {
+      padding: 30px 20px;
+      .todo-content-header {
+        font-size: $font-size-h5;
+      }
+      .all-tasks-w {
+        padding-top: 0px;
+        padding-right: 0px;
+      }
+      .tasks-list li.draggable-task {
+        padding-right: 10px;
+      }
+    }
+  }
+
+
+  // Chat
+  .full-chat-w .full-chat-i {
+    display: block;
+  }
+
+  // Projects
+  .projects-list .project-head {
+    padding: 20px 30px;
+    display: block;
+    text-align: center;
+    .project-users {
+      text-align: center;
+      margin-top: 2rem;
+    }
+  }
+  .projects-list .project-info {
+    padding: 20px 30px;
+    .el-tablo {
+      text-align: center;
+      margin-bottom: 0.5rem;
+    }
+  }
+  .display-type {
+    content: "phone";
+  }
+  .ae-list-w {
+    flex: 1 1 230px;
+  }
+  .ae-content-w {
+    display: none;
+  }
+  .top-menu-secondary {
+    overflow: scroll;
+    padding: 0px;
+    > ul {
+      white-space: nowrap;
+      li a {
+        padding: 15px 10px;
+        margin: 0px 10px;
+      }
+    }
+    &.with-overflow {
+      overflow: visible;
+    }
+  }
+  .nav.upper.nav-tabs .nav-link {
+    margin-right: 0.7rem;
+    padding-bottom: 10px;
+    font-size: $font-size-base * 0.8;
+  }
+  .app-email-w {
+    &.forse-show-content {
+      .ae-content-w {
+        display: block;
+      }
+      .ae-list-w {
+        display: none;
+      }
+    }
+  }
+  .aec-full-message-w .message-content {
+    padding: 15px;
+  }
+  .aec-full-message-w .message-attachments {
+    text-align: center;
+  }
+  .aec-full-message-w .message-head .user-w .user-role span {
+    margin-left: 0;
+  }
+  .aec-reply {
+    padding: 15px;
+    .reply-header {
+      padding-bottom: 15px;
+      padding-top: 15px;
+      text-align: center;
+    }
+  }
+  .aec-reply .buttons-w {
+    display: block;
+    text-align: center;
+    .btn {
+      margin-bottom: 10px;
+    }
+  }
+  .floated-chat-btn i + span {
+    display: none;
+  }
+  .floated-chat-btn {
+    padding: 10px 12px;
+  }
+  .floated-colors-btn {
+    padding: 10px 12px;
+    &.second-floated-btn {
+      right: auto;
+      left: 10px;
+    }
+    span + span {
+      display: none;
+    }
+  }
+  .padded {
+    padding: 1rem;
+  }
+
+  // USER PROFILE
+  .user-profile {
+    .up-head-w .up-social {
+      top: 5px;
+      right: 10px;
+      a {
+        font-size: 24px;
+      }
+    }
+    .up-main-info {
+      padding-bottom: 10%;
+    }
+    .up-header {
+      font-size: $font-size-h3;
+      margin-bottom: 5px;
+      padding-bottom: 5px;
+    }
+    .up-sub-header {
+      font-size: $font-size-h6;
+    }
+    .up-controls {
+      text-align: center;
+      .value-pair {
+        margin-bottom: 1rem;
+      }
+      .text-right {
+        text-align: center!important;
+      }
+    }
+  }
+
+
+
+
+  // TIMED ACTIVITY
+  .timed-activities {
+    padding: 0;
+  }
+  .timed-activity {
+    display: block;
+    font-size: $font-size-base;
+    .ta-date {
+      flex: 0 0 auto;
+      margin-bottom: 3rem;
+      text-align: left;
+      span:after {
+        transform: none;
+        left: 0px;
+      }
+    }
+    .ta-record-w {
+      padding-left: 0px;
+    }
+    .ta-record {
+      display: block;
+      margin-bottom: 1rem;
+      padding-bottom: 1rem;
+      border-bottom: 1px solid rgba(0,0,0,0.05);
+    }
+    .ta-activity {
+      font-size: $font-size-base * 0.9;
+    }
+  }
+
+
+
+
+  .content-panel-toggler {
+    display: none;
+  }
+  .menu-mobile {
+    display: block;
+  }
+  .element-info {
+    .element-search {
+      margin-top: 1rem;
+    }
+  }
+  .element-box .os-tabs-controls, .invoice-w .os-tabs-controls, .big-error-w .os-tabs-controls {
+    display: block;
+    margin-left: -1rem;
+    margin-right: -1rem;
+    .nav + .nav {
+      margin-top: 1rem;
+    }
+  }
+  .element-box.el-tablo {
+    text-align: center;
+  }
+  .invoice-w .infos {
+    display: block;
+    .info-2 {
+      text-align: left;
+      padding-top: 30px;
+    }
+  }
+  .invoice-heading {
+    margin-bottom: 2rem;
+    margin-top: 4rem;
+  }
+  .invoice-body {
+    display: block;
+    .invoice-desc {
+      margin-bottom: 2rem;
+    }
+  }
+  .invoice-footer {
+    display: block;
+    text-align: center;
+    .invoice-logo {
+      margin-bottom: 1rem;
+    }
+  }
+
+  .controls-above-table {
+    .form-control {
+      width: 110px;
+      display: inline-block;
+    }
+    .btn {
+      margin-bottom: 0.5rem;
+    }
+  }
+  .layout-w {
+    display: block;
+  }
+  .content-w, .menu-side .content-w {
+    display: block;
+  }
+  .content-i {
+    display: block;
+    .content-box {
+      display: block;
+      padding: 15px;
+    }
+    .content-panel {
+      padding: 15px;
+      border-left: none;
+      display: block;
+      width: auto;
+    }
+  }
+  .big-error-w {
+    padding: 1rem;
+  }
+  .element-wrapper {
+    padding-bottom: 1.5rem;
+  }
+  .element-box {
+    padding: 1rem;
+  }
+  canvas {
+    max-width: 100%;
+  }
+  table {
+    max-width: 100%;
+  }
+  .invoice-w {
+    padding: 30px;
+  }
+  .breadcrumb {
+    margin-bottom: 1rem;
+  }
+}
+
+
+
+/* #12. Screen Height >= 700px */
+@media (min-height: 700px) and (min-width: 768px){
+  .modal-dialog{
+    &.modal-centered {
+      top: 50%;
+      transform: translate(0, -80%);
+      margin: 0px auto;
+    }
+  }
+
+  .modal.show {
+
+    .modal-dialog{
+      &.modal-centered {
+        top: 50%;
+        transform: translate(0, -50%);
+        margin: 0px auto;
+      }
+    }
+  }
+}

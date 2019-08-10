@@ -1,0 +1,218 @@
+/* 
+
+Chat Styles 
+
+#1. Popup chat on a side
+
+*/
+
+/*
+#1. Popup chat on a side
+*/
+
+.floated-chat-btn {
+  z-index: 9999;
+  position: fixed;
+  bottom: 10px;
+  right: 10px;
+  background: #097CFF;
+  box-shadow: 0 2px 20px 0 rgba(46,130,255,0.75);
+  border-radius: 75px;
+  color: #fff;
+  padding: 12px 20px;
+  display: flex;
+  align-items: center;
+  vertical-align: middle;
+  font-size: $font-size-base * 1.2;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  i {
+    vertical-align: middle;
+    display: inline-block;
+    font-size: 24px;
+  }
+  span {
+    vertical-align: middle;
+    display: inline-block;
+    font-weight: $font-weight-bold;
+  }
+  i + span {
+    margin-left: 15px;
+  }
+  &:hover {
+    transform: scale(1.05);
+    background-color: darken(#097CFF, 10%);
+    box-shadow: 0 2px 30px 0 rgba(46,130,255,0.8);
+  }
+}
+
+.floated-chat-w {
+  z-index: 9999;
+  position: fixed;
+  bottom: 70px;
+  right: 10px;
+  visibility: hidden;
+  opacity: 0;
+  transform: translateY(-20px);
+  transition: all 0.3s ease;
+  &.active {
+    visibility: visible;
+    opacity: 1;
+    transform: translateY(0px);
+  }
+  .floated-chat-i {
+    background-color: #fff;/* Rectangle: */
+    box-shadow: 0 2px 40px 0 rgba(43,132,210,0.41);
+    border-radius: 10px;
+    width: 320px;
+    position: relative;
+    .chat-close {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      color: rgba(0,0,0,0.8);
+      font-size: 10px;
+      cursor: pointer;
+    }
+  }
+
+  .chat-head {
+    padding: 20px;
+    border-bottom: 1px solid rgba(0,0,0,0.05);
+    .user-w {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      .user-avatar-w {
+        width: 50px;
+        .user-avatar {
+          border-radius: 40px;
+          overflow: hidden;
+          img {
+            max-width: 100%;
+            height: auto;
+          }
+        }
+      }
+      &.with-status {
+        .user-avatar-w {
+          position: relative;
+          &:before {
+            content: "";
+            width: 10px;
+            height: 10px;
+            position: absolute;
+            top: 2px;
+            right: 2px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 0px 3px #fff;
+          }
+        }
+        &.status-green .user-avatar-w:before {
+          background-color: $brand-success;
+        }
+        &.status-red .user-avatar-w:before {
+          background-color: $brand-danger;
+        }
+      }
+      .user-name {
+        padding-left: 20px;
+        flex: 1;
+      }
+      .user-title {
+        margin-bottom: 2px;
+        color: $brand-primary;
+      }
+      .user-role {
+        font-weight: $font-weight-bold;
+        font-size: $font-size-base * 0.9;
+      }
+      .user-action {
+        width: 50px;
+        color: $brand-primary;
+        font-size: 18px;
+      }
+    }
+  }
+  .chat-messages {
+    padding: 20px;
+    height: 300px;
+    position: relative;
+    overflow: hidden;
+    .message {
+      margin-bottom: 12px;
+      .message-content {
+        color: #594939;
+        padding: 10px 20px;
+        background-color: #fcf6ee;
+        border-radius: 20px 20px 20px 0px;
+        max-width: 80%;
+        display: inline-block;
+        text-align: left;
+      }
+      &.self {
+        text-align: right;
+        .message-content {
+          border-radius: 20px 20px 0px 20px;
+          background-color: #e2efff;
+          color: #2A4E7F;
+        }
+      }
+    }
+    .date-break {
+      text-align: center;
+      margin-bottom: 10px;
+      color: rgba(0,0,0,0.4);
+    }
+  }
+  .chat-controls {
+    padding: 10px;
+    padding-top: 0px;
+    border-top: 1px solid rgba(0,0,0,0.1);
+    .message-input {
+      border: 1px solid transparent;
+      background-color: #fff;
+      padding: 10px;
+      width: 100%;
+      display: block;
+      border-radius: 0px;
+      &:focus {
+        outline: none;
+        border-bottom: 1px solid $brand-primary;
+      }
+    }
+    .chat-extra {
+      text-align: left;
+      padding-left: 0px;
+      padding-top: 10px;
+      a {
+        display: inline-block;
+        margin-left: 10px;
+        font-size: 16px;
+        position: relative;
+        .extra-tooltip {
+          background-color: rgba(0,0,0,0.9);
+          color: #fff;
+          font-weight: $font-weight-bold;
+          font-size: $font-size-base * 0.7;
+          text-transform: uppercase;
+          display: inline-block;
+          padding: 2px 7px;
+          border-radius: 4px;
+          position: absolute;
+          top: -20px;
+          left: 50%;
+          transform: translateX(-50%);
+          white-space: nowrap;
+          display: none;
+        }
+        &:hover {
+          text-decoration: none;
+          .extra-tooltip {
+            display: block;
+          }
+        }
+      }
+    }
+  }
+}

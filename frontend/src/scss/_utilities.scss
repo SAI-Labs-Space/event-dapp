@@ -1,0 +1,101 @@
+.relative {
+  position: relative;
+}
+.padded-v {
+  padding: 1rem 10px;
+}
+.padded-v-big {
+  padding: 2rem 10px;
+}
+
+.padded {
+  padding: 1rem 2rem;
+}
+.b-l {
+  border-left: 1px solid $border-color;
+}
+.b-r {
+  border-right: 1px solid $border-color;
+}
+.b-t {
+  border-top: 1px solid $border-color;
+}
+.b-b {
+  border-bottom: 1px solid $border-color;
+}
+
+.m-t {
+  margin-top: 1rem;
+}
+.m-b {
+  margin-bottom: 1rem;
+}
+
+@media (min-width: 992px) {
+  .padded-lg {
+    padding: 1rem 2rem;
+  }
+  .b-l-lg {
+    border-left: 1px solid $border-color;
+  }
+  .b-r-lg {
+    border-right: 1px solid $border-color;
+  }
+  .b-t-lg {
+    border-top: 1px solid $border-color;
+  }
+  .b-b-lg {
+    border-bottom: 1px solid $border-color;
+  }
+}
+
+.example-column {
+  padding: 12px 15px;
+  background: #EEF5FF;
+  border: 1px solid #AEC8FF;
+  margin-bottom: 15px;
+  text-align: center;
+  & + .example-column {
+    border-left: none;
+  }
+}
+.example-content .progress + .progress {
+  margin-top: 1rem;
+}
+
+
+.with-avatar {
+  margin-right: 5px;
+  img {
+    display: inline-block;
+    vertical-align: middle;
+    border-radius: 50px;
+    width: 30px;
+    height: auto;
+    margin-right: 10px;
+  }
+  span {
+    display: inline-block;
+    vertical-align: middle;
+  }
+}
+a.with-avatar {
+  span {
+    border-bottom: 1px solid $link-color;
+  }
+}
+
+.add-agent-btn {
+  i {
+    margin-right: 15px;
+    padding-left: 5px;
+    font-size: 20px;
+    display: inline-block;
+    vertical-align: middle;
+  }
+  span {
+    display: inline-block;
+    vertical-align: middle;
+    border-bottom: 1px solid $brand-primary;
+  }
+}
