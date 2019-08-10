@@ -1,13 +1,17 @@
 import React, { useState,useEffect } from 'react';
 import SignupModal from './SignUpModal';
 import connector from '../../util/connector';
+import {useGlobalState} from '../../util/state';
+
 const BASE_URL='http://localhost:8000/api';
 
 function MainHeader() {
 
     const [showSignup, setSignupModal] = useState(false);
-    const [name, setName] = useState("");
-    const [ethAddr, setEthAddr] = useState("")
+    const [ethAddr, setEthAddr] = useGlobalState('address');
+    const [name, setName] = useGlobalState('name');
+    const [email, setEmail] = useGlobalState('email');
+    const [accessToken, setAccessToken] = useGlobalState('accessToken');
 
     return (
         <div className=" desktop-menu menu-top-w menu-activated-on-hover">
@@ -60,8 +64,8 @@ function MainHeader() {
         }
         
         
-        const publicAddress = coinbase.toLowerCase();
-        let realName = '';
+         const publicAddress = coinbase.toLowerCase();
+         let user={};
         fetch(`${BASE_URL}/users?publicAddress=${publicAddress}`)
         .then(response => response.json()).then(users =>{
             if(users.length==0){   
@@ -69,8 +73,7 @@ function MainHeader() {
                 setSignupModal(true)
                 return Promise.resolve({signature:null})
             }else{
-                const user = users[0];
-                realName = user.name;
+                user = users[0];
                 return handleSignMessage(user.publicAddress,user.nonce)
             }
         }).then(({publicAddress,signature}) =>{
@@ -86,13 +89,14 @@ function MainHeader() {
               }).then(response => response.json())
         }).then(res=>{
             if(res!=null){
-                const accessToken = res.accessToken;
-                console.log(accessToken);
-                setName(realName);
+                setAccessToken(res.accessToken);
+                setName(user.name);
+                setEmail(user.email);             
             }
         });
           
-        //await signMessage(publicAddress,1234);
+        // let data = await handleSignMessage(publicAddress,1234);
+        // console.log(data);
     }
 
     async function  handleSignMessage (publicAddress,nonce){
@@ -100,7 +104,7 @@ function MainHeader() {
         try {
             web3 = await connector.getWeb3();
             console.log(web3);
-          const signature =  web3.eth.personal.sign(
+          const signature = await web3.eth.personal.sign(
             `I am signing my one-time nonce: ${nonce}`,
             publicAddress,
             '' // MetaMask will ignore the password argument here
@@ -113,13 +117,13 @@ function MainHeader() {
         }
       };
 
-    function callback ({ethAddress,email,realName,phoneNumber}) {
-      console.log({email,realName,phoneNumber});
+    function callback ({ethAddress,emailAdress,realName,phoneNumber}) {
+       
 
       fetch(`${BASE_URL}/users`, {
         body: JSON.stringify({ 
             publicAddress:ethAddress,
-            email:email,
+            email:emailAdress,
             name:realName,
             phoneNumber:phoneNumber,
          }),
@@ -143,6 +147,7 @@ function MainHeader() {
             const accessToken = res.accessToken;
             console.log(accessToken);
             setName(realName);
+            setEmail(emailAdress);
     });
 
     }

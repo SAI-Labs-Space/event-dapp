@@ -9,12 +9,13 @@ const BASE_URL='http://localhost:8000/api';
 
 function CreateEvent() {
 
-    const [name, setName] = useState("");
+    const [eventName, setEventName] = useState("");
     const [description, setDescription] = useState("");
     const [address, setAddress] = useState("");
     const [quota, setQuota] = useState(10);
     const [start, setStart] = useState(new Date());
     const [end, setEnd] = useState(new Date());
+
 
     return (
         <div>
@@ -40,7 +41,7 @@ function CreateEvent() {
                                             <div className="form col-6">
                                                 <div className="form-group">
                                                     <label className="control-label">Event Name</label>
-                                                    <input value={name} onChange={e => setName(e.target.value)} className="form-control" />
+                                                    <input value={eventName} onChange={e => setEventName(e.target.value)} className="form-control" />
                                                 </div>
                                                 <div className="form-group">
                                                     <label className="control-label">Event Description</label>
@@ -126,7 +127,7 @@ function CreateEvent() {
 
         let result = await MyContract.deploy({
                 data: '0x'+bytecode,
-                arguments: ["0x6c1bfb2fb67dd71de2b9712f9025a4ddc578b06f", name,address,description,startTime,endTime,quota]
+                arguments: ["0x6c1bfb2fb67dd71de2b9712f9025a4ddc578b06f", eventName,address,description,startTime,endTime,quota]
             }).send({
                 from:coinbase
             }).on('transactionHash', (transactionHash)=>{ console.log(transactionHash) })
@@ -140,7 +141,7 @@ function CreateEvent() {
             body: JSON.stringify({ 
                 publicAddress: contractAddress,
                 ownerAddress: coinbase,
-                name: name,
+                eventName: eventName,
                 description: description, 
                 location: address,
                 startDate: start,

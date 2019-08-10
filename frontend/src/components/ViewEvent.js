@@ -5,6 +5,7 @@ import { TabContent, TabPane, Nav, NavItem, NavLink } from 'reactstrap';
 import { withRouter } from 'react-router';
 import Abi from '../contracts/abi';
 import connector from '../util/connector';
+import {useGlobalState} from '../util/state';
 
 
 
@@ -23,6 +24,9 @@ function ViewEvent(props) {
     const [myContract, setMyContract] = useState(null);
     const [isRegister, setIsRegister] = useState(null);
     const [owner, setOwner] = useState(false);
+
+    const [name] = useGlobalState('name');
+    const [email] = useGlobalState('email');
    
     if(isLoaded==false){
         init();

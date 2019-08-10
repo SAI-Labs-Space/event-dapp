@@ -26,7 +26,6 @@ class MainPage extends React.Component {
             },
           }).then(response => response.json())
           .then(res=>{
-              console.log(res);
               this.setState({events:res})
           })
           .catch(err=>console.log(err))
