@@ -4,8 +4,10 @@ import DatePicker from 'react-datepicker';
 import Abi from '../contracts/abi';
 import Bytecode from '../contracts/bytecode';
 import connector from '../util/connector';
+import { toast } from 'react-toastify';
+import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 
-const BASE_URL='http://localhost:8000/api';
+const BASE_URL = 'http://localhost:8000/api';
 
 function CreateEvent() {
 
@@ -15,6 +17,8 @@ function CreateEvent() {
     const [quota, setQuota] = useState(10);
     const [start, setStart] = useState(new Date());
     const [end, setEnd] = useState(new Date());
+    const [confirming, setConfirming] = useState(false);
+    const [confirmation, setConfirmation] = useState(0);
 
 
     return (
@@ -89,9 +93,9 @@ function CreateEvent() {
                                                 </div>
                                                 <br />
                                                 <div className="form-group">
-                                                    <button onClick={() =>{
-                                                            createEvent();
-                                                    }}class="btn btn-primary">Save</button>
+                                                    <button onClick={() => {
+                                                        createEvent();
+                                                    }} class="btn btn-primary">Save</button>
                                                 </div>
                                             </div>
                                         </div>
@@ -103,15 +107,32 @@ function CreateEvent() {
                     </div>
                 </div>
             </div>
+
+            <Modal isOpen={confirming} className={""}>
+                <ModalHeader>Create Event</ModalHeader>
+                <ModalBody>
+                    <div>
+                        number of confirmations { confirmation }
+                    </div>
+                </ModalBody>
+                <ModalFooter>
+                    <Button disabled={true} color="primary" onClick={() => {}}>Cofiming transactions...</Button>
+                </ModalFooter>
+            </Modal>
         </div>
     );
-    async function createEvent(){
+
+    function confirmingTransactions() {
+        setConfirming(true);
+    }
+
+    async function createEvent() {
         let startTime = start.getTime();
         let endTime = start.getTime();
         let web3;
-        try{
+        try {
             web3 = await connector.getWeb3(window);
-        }catch(err){
+        } catch (err) {
             window.alert(err);
             return;
         }
@@ -120,43 +141,51 @@ function CreateEvent() {
 
         // Retrieve the byte code
         let bytecode = Bytecode['object'];
-        
+
         let MyContract = new web3.eth.Contract(abi);
-        
+
         const coinbase = await web3.eth.getCoinbase();
 
         let result = await MyContract.deploy({
-                data: '0x'+bytecode,
-                arguments: ["0x6c1bfb2fb67dd71de2b9712f9025a4ddc578b06f", eventName,address,description,startTime,endTime,quota]
-            }).send({
-                from:coinbase
-            }).on('transactionHash', (transactionHash)=>{ console.log(transactionHash) })
-            .on('confirmation', (confirmationNumber, receipt)=>{
+            data: '0x' + bytecode,
+            arguments: ["0x6c1bfb2fb67dd71de2b9712f9025a4ddc578b06f", eventName, address, description, startTime, endTime, quota]
+        }).send({
+            from: coinbase
+        }).on('transactionHash', (transactionHash) => { 
+            console.log(transactionHash);
+            confirmingTransactions();
+        })
+            .on('confirmation', (confirmationNumber, receipt) => {
                 console.log(confirmationNumber)
                 console.log(receipt)
+                setConfirmation(confirmationNumber);
             });;
         let contractAddress = result.options.address;
 
         fetch(`${BASE_URL}/events`, {
-            body: JSON.stringify({ 
+            body: JSON.stringify({
                 publicAddress: contractAddress,
                 ownerAddress: coinbase,
                 eventName: eventName,
-                description: description, 
+                description: description,
                 location: address,
                 startDate: start,
                 endDate: end,
-                quota:quota,
-             }),
+                quota: quota,
+            }),
             headers: {
-              'Content-Type': 'application/json'
+                'Content-Type': 'application/json'
             },
             method: 'POST'
-          }).then(response => response.json())
-          .then(res=>{
-              console.log(res);
-          })
-          .catch(err=>console.log(err))
+        }).then(response => response.json())
+            .then(res => {
+                console.log(res);
+                toast.success("Event Successfully Created!", {
+                    position: toast.POSITION.TOP_RIGHT
+                });
+                setConfirming(false);
+            })
+            .catch(err => console.log(err))
 
     }
 }
