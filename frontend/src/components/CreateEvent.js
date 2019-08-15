@@ -6,10 +6,11 @@ import Bytecode from '../contracts/bytecode';
 import connector from '../util/connector';
 import { toast } from 'react-toastify';
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
+import { withRouter } from 'react-router';
 
 const BASE_URL = 'http://localhost:8000/api';
 
-function CreateEvent() {
+function CreateEvent(props) {
 
     const [eventName, setEventName] = useState("");
     const [description, setDescription] = useState("");
@@ -127,6 +128,7 @@ function CreateEvent() {
     }
 
     async function createEvent() {
+        const self = this;
         let startTime = start.getTime();
         let endTime = start.getTime();
         let web3;
@@ -164,8 +166,8 @@ function CreateEvent() {
 
         fetch(`${BASE_URL}/events`, {
             body: JSON.stringify({
-                publicAddress: contractAddress,
-                ownerAddress: coinbase,
+                publicAddress: contractAddress.toLowerCase(),
+                ownerAddress: coinbase.toLowerCase(),
                 eventName: eventName,
                 description: description,
                 location: address,
@@ -179,15 +181,17 @@ function CreateEvent() {
             method: 'POST'
         }).then(response => response.json())
             .then(res => {
-                console.log(res);
+                console.log("FINAL", res);
                 toast.success("Event Successfully Created!", {
                     position: toast.POSITION.TOP_RIGHT
                 });
                 setConfirming(false);
+                props.history.push(`/event/${contractAddress.toLowerCase()}`);
+                
             })
             .catch(err => console.log(err))
 
     }
 }
 
-export default CreateEvent;
+export default withRouter(CreateEvent);

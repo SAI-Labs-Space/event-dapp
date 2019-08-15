@@ -35,7 +35,8 @@ function ViewEvent(props) {
 
     async function init(){
 
-        let address = '0x892827bb60a0a29e9e2a1deda93ad2ce27da86f3';//props.match.params.id; // 0x892827bb60a0a29e9e2a1deda93ad2ce27da86f3
+        // let address = '0x892827bb60a0a29e9e2a1deda93ad2ce27da86f3';//props.match.params.id; // 0x892827bb60a0a29e9e2a1deda93ad2ce27da86f3
+        let address = props.match.params.id;
 
         let web3Instance
         try{
@@ -66,11 +67,11 @@ function ViewEvent(props) {
         setIsRegister(isRegister);
 
         setEvent({
-            name:eventName,
-            address:eventAddress,
+            name: "hardcode", // TODO find out eventName call is return function
+            address: "hardcode",
             rewards:`${rewards[0]/(10**rewards[1])} ${rewards[2]}`,
             status:status
-        })
+        });
 
         let owner = await myContractInstance.methods.isOwner.call();
         setOwner(owner);
