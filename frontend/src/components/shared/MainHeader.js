@@ -3,7 +3,7 @@ import SignupModal from './SignUpModal';
 import connector from '../../util/connector';
 import { useGlobalState } from '../../util/state';
 import { toast } from 'react-toastify';
-import IsLogged from '../../consumer';
+import { IsLogged } from '../../consumer';
 
 const BASE_URL = 'http://localhost:8000/api';
 

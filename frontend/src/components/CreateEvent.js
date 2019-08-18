@@ -7,6 +7,7 @@ import connector from '../util/connector';
 import { toast } from 'react-toastify';
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 import { withRouter } from 'react-router';
+import { IsLogged } from '../consumer';
 
 const BASE_URL = 'http://localhost:8000/api';
 
@@ -94,9 +95,11 @@ function CreateEvent(props) {
                                                 </div>
                                                 <br />
                                                 <div className="form-group">
-                                                    <button onClick={() => {
-                                                        createEvent();
-                                                    }} class="btn btn-primary">Save</button>
+                                                    <IsLogged>
+                                                        <button onClick={() => {
+                                                            createEvent();
+                                                        }} class="btn btn-primary">Save</button>
+                                                    </IsLogged>
                                                 </div>
                                             </div>
                                         </div>

@@ -1,7 +1,7 @@
 import Context from './context';
 import React from 'react';
 
-const IsLogged = (props) => (
+export const IsLogged = (props) => (
     <Context.Consumer>
         {value => {
             console.log(value, props);
@@ -16,5 +16,3 @@ const IsLogged = (props) => (
         }}
     </Context.Consumer>
 );
-
-export default IsLogged;

@@ -1,7 +1,7 @@
 import React from 'react';
 import MainHeader from './shared/MainHeader';
 import { withRouter } from 'react-router';
-import IsLogged from '../consumer';
+import { IsLogged } from '../consumer';
 
 const BASE_URL='http://localhost:8000/api';
 
