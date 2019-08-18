@@ -6,9 +6,13 @@ import { TabContent, TabPane, Nav, NavItem, NavLink } from 'reactstrap';
 import classnames from 'classnames';
 import connector from '../util/connector';
 import Abi from '../contracts/abi';
+import { withRouter } from 'react-router';
+import moment from 'moment';
+
+const BASE_URL = 'http://localhost:8000/api';
 
 
-function EventAdmin() {
+function EventAdmin(props) {
     const [tab, setTab] = useState("3");
     const [contract, setContract] = useState(null);
     const [event, setEvent] = useState({
@@ -27,9 +31,20 @@ function EventAdmin() {
         setLoaded(true);
     }
 
+    async function getFromDB(publicAddress) {
+        const response = await fetch(`${BASE_URL}/events/item/${publicAddress}`, {
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            method: 'GET'
+        });
+
+        return response.json();
+    }
+
     
     async function init(){
-        let address = '0x892827bb60a0a29e9e2a1deda93ad2ce27da86f3';//props.match.params.id;
+        let address = props.match.params.id;//props.match.params.id;
         let web3Instance
         try{
             web3Instance = await connector.getWeb3(window);
@@ -52,11 +67,21 @@ function EventAdmin() {
         let quota = await myContractInstance.methods.quota.call();
         let status = await myContractInstance.methods.status.call();
 
+        console.log(quota);
+        // override data
+        quota = 0;
+        eventName = "-";
+        eventAddress = "-";
+
+        let localData = await getFromDB(props.match.params.id);
+
         setEvent({
-            name:eventName,
-            address:eventAddress,
-            rewards:`${rewards[0].div(rewards[1]).toNumber()} ${rewards[2]}`,
-            quota:quota.toNumber(),
+            name: localData.name,
+            address: localData.physicalAddress,
+            rewards:`${rewards[0]} ${rewards[1]}`,
+            startDate: localData.startDate,
+            endDate: localData.endDate,
+            quota: quota,
             status:status,
         })
 
@@ -132,7 +157,7 @@ function EventAdmin() {
                                                     <div className="form-group row">
                                                         <label className="control-label bold col-2">When</label>
                                                         <label className="control-label col-6">
-                                                            Sun, Aug 11 02.00 PM - Sun, Aug 11 06.00 PM
+                                                            { moment(event.startDate).format('LLL') } - { moment(event.endDate).format('LLL') }
                                                 </label>
                                                     </div>
                                                     <div className="form-group row">
@@ -162,4 +187,4 @@ function EventAdmin() {
 
 }
 
-export default EventAdmin;
+export default withRouter(EventAdmin);

@@ -1,12 +1,12 @@
 import * as path from 'path';
 import * as os from 'os';
-import { INTEGER, Sequelize, STRING,DATE } from 'sequelize';
+import { INTEGER, Sequelize, STRING,DATE, TEXT } from 'sequelize';
 
 import { User,Event } from './models';
 
 const sequelize = new Sequelize('event-database', '', undefined, {
   dialect: 'sqlite',
-  storage: path.join(os.tmpdir(), 'db.sqlite'),
+  storage: './db.sqlite',
   logging: false
 });
 
@@ -78,6 +78,12 @@ Event.init(
     endDate: {
       type: DATE,
       unique: true
+    },
+    quota: {
+      type: INTEGER
+    },
+    physicalAddress: {
+      type: TEXT
     }
   },
   {

@@ -1,6 +1,7 @@
 import React from 'react';
 import MainHeader from './shared/MainHeader';
 import { withRouter } from 'react-router';
+import IsLogged from '../consumer';
 
 const BASE_URL='http://localhost:8000/api';
 
@@ -60,9 +61,11 @@ class MainPage extends React.Component {
                                 <div className="col-6">
                                     <img src="https://cdn.dribbble.com/users/1312159/screenshots/3499807/design-drinks.png" className="img-fluid"/>
                                     <br /><br />
-                                    <button onClick={() => this.navigate('/create-event')} href="/create-event" className="btn btn-primary">
-                                        Create My Event
-                                    </button>
+                                    <IsLogged>
+                                        <button onClick={() => this.navigate('/create-event')} href="/create-event" className="btn btn-primary">
+                                            Create My Event
+                                        </button>
+                                    </IsLogged>
                                 </div>
                             </div>
                         </div>

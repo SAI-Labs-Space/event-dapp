@@ -3,6 +3,7 @@ import SignupModal from './SignUpModal';
 import connector from '../../util/connector';
 import { useGlobalState } from '../../util/state';
 import { toast } from 'react-toastify';
+import IsLogged from '../../consumer';
 
 const BASE_URL = 'http://localhost:8000/api';
 
@@ -10,6 +11,7 @@ function MainHeader() {
 
     const [showSignup, setSignupModal] = useState(false);
     const [ethAddr, setEthAddr] = useGlobalState('address');
+    const [loggedAddress, setloggedAddress] = useState('');
     const [name, setName] = useGlobalState('name');
     const [email, setEmail] = useGlobalState('email');
     const [accessToken, setAccessToken] = useGlobalState('accessToken');
@@ -40,6 +42,7 @@ function MainHeader() {
                 </div>
             </div>
 
+            <IsLogged loggedAddress={loggedAddress}/>
             <SignupModal show={showSignup} toggle={setSignupModal} ethAddr={ethAddr} callback={callback} />
         </div>
     )
@@ -93,6 +96,7 @@ function MainHeader() {
                     setAccessToken(res.accessToken);
                     setName(user.name);
                     setEmail(user.email);
+                    setloggedAddress(user.publicAddress);
 
                     toast.success("Login Success!", {
                         position: toast.POSITION.TOP_RIGHT

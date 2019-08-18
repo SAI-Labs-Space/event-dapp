@@ -173,7 +173,7 @@ function CreateEvent(props) {
                 location: address,
                 startDate: start,
                 endDate: end,
-                quota: quota,
+                quota: Number(quota),
             }),
             headers: {
                 'Content-Type': 'application/json'

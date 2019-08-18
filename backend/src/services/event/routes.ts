@@ -8,6 +8,7 @@ export const eventRouter = express.Router();
 
 /** GET /api/events */
 eventRouter.route('/').get(controller.find);
+eventRouter.route('/item/:id').get(controller.get);
 
 /** GET /api/events/:address */
 // eventRouter

@@ -16,12 +16,18 @@ export const find = (req: Request, res: Response, next: NextFunction) => {
 
 export const get = (req: Request, res: Response, next: NextFunction) => {
   return Event.findOne({
-    where: {publicAddress: req.params.address}
+    where: {publicAddress: req.params.id}
   }).then(event => res.json(event))
   .catch(err=>res.status(400).json({message:err.message}));
 };
 
-export const create = (req: Request, res: Response, next: NextFunction) =>
-  Event.create(req.body)
+export const create = (req: Request, res: Response, next: NextFunction) => {
+  const body = Object.assign({}, req.body);
+  body.name = body.eventName;
+  body.physicalAddress = body.location;
+  delete body.eventName;
+  Event.create(body)
     .then(event => res.json(event))
     .catch(err=>res.status(400).json({message:err.message}));
+};
+  

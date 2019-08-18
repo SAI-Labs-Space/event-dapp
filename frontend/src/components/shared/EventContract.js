@@ -13,6 +13,9 @@ function EventContract(props) {
     }
 
     useEffect(() => {
+
+        console.log(props.limit);
+        
         if(props.limit){
             setLimit(props.limit)
         }

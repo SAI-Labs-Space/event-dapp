@@ -6,14 +6,15 @@ import { withRouter } from 'react-router';
 import Abi from '../contracts/abi';
 import connector from '../util/connector';
 import {useGlobalState} from '../util/state';
+import moment from 'moment';
 
-
+const BASE_URL = 'http://localhost:8000/api';
 
 function ViewEvent(props) {
 
     const [event, setEvent] = useState({
         name: '-',
-        address: 'Gambir, Central Jakarta City, Jakarta',
+        address: '-',
         rewards:'-',
         status:0,
     });
@@ -31,6 +32,17 @@ function ViewEvent(props) {
     if(isLoaded==false){
         init();
         setLoaded(true);
+    }
+
+    async function getFromDB(publicAddress) {
+        const response = await fetch(`${BASE_URL}/events/item/${publicAddress}`, {
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            method: 'GET'
+        });
+
+        return response.json();
     }
 
     async function init(){
@@ -66,11 +78,14 @@ function ViewEvent(props) {
         let isRegister = await myContractInstance.methods.isRegister(coinbase).call();
         setIsRegister(isRegister);
 
+        let localData = await getFromDB(props.match.params.id);
         setEvent({
-            name: "hardcode", // TODO find out eventName call is return function
-            address: "hardcode",
+            name: localData.name, // TODO find out eventName call is return function
+            address: localData.physicalAddress,
             rewards:`${rewards[0]/(10**rewards[1])} ${rewards[2]}`,
-            status:status
+            status: 0,
+            startDate: localData.startDate,
+            endDate: localData.endDate,
         });
 
         let owner = await myContractInstance.methods.isOwner.call();
@@ -155,7 +170,7 @@ function ViewEvent(props) {
                                                     <div className="form-group row">
                                                         <label className="control-label bold col-2">When</label>
                                                         <label className="control-label col-6">
-                                                            Sun, Aug 11 02.00 PM - Sun, Aug 11 06.00 PM
+                                                        { moment(event.startDate).format('LLL') } - { moment(event.endDate).format('LLL') }
                                                 </label>
                                                     </div>
                                                     <div className="form-group row">
@@ -167,9 +182,9 @@ function ViewEvent(props) {
 
                                                     <div className="form-group row">
                                                         <label className="control-label bold col-2">RSVP</label>
-                                                        {event.status==0&&
+                                                        { (event.status==0) &&
                                                             <label className="control-label bold col-6">
-                                                                Free (waiting admin open event)
+                                                                (waiting admin open event)
                                                             </label>
                                                         }
                                                         {event.status==1&& isRegister==false &&
@@ -214,6 +229,9 @@ function ViewEvent(props) {
                                                                 </tr>
                                                                
                                                             })}
+                                                            {participants.length == 0 && <tr>
+                                                                <td colSpan="4" style={{ textAlign: 'center'}}>no participants</td>
+                                                            </tr>}
                                                         </tbody>
                                                     </table>
 
