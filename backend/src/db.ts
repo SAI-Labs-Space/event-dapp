@@ -26,8 +26,7 @@ User.init(
       validate: { isLowercase: true }
     },
     name: {
-      type: STRING,
-      unique: true
+      type: STRING
     },
     email: {
       type: STRING,
@@ -50,34 +49,27 @@ Event.init(
     publicAddress: {
       allowNull: false,
       type: STRING,
-      unique: true,
       validate: { isLowercase: true }
     },
     ownerAddress: {
       allowNull: false,
       type: STRING,
-      unique: true,
       validate: { isLowercase: true }
     },
     name: {
-      type: STRING,
-      unique: true
+      type: STRING
     },
     description: {
-      type: STRING,
-      unique: true
+      type: STRING
     },
     location: {
-      type: STRING,
-      unique: true
+      type: STRING
     },
     startDate: {
-      type: DATE,
-      unique: true
+      type: DATE
     },
     endDate: {
-      type: DATE,
-      unique: true
+      type: DATE
     },
     quota: {
       type: INTEGER

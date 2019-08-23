@@ -61,11 +61,11 @@ function EventAdmin(props) {
         let myContractInstance = new web3Instance.eth.Contract(abi,address,{from:coinbase});
         setContract(myContractInstance);
      
-        let eventName = await myContractInstance.methods.eventName.call();
-        let eventAddress = await myContractInstance.methods.eventAddress.call();
+        let eventName = await myContractInstance.methods.eventName().call();
+        let eventAddress = await myContractInstance.methods.eventAddress().call();
         let rewards = await myContractInstance.methods.rewards().call();
         let quota = await myContractInstance.methods.quota.call();
-        let status = await myContractInstance.methods.status.call();
+        let status = await myContractInstance.methods.status().call();
 
         console.log(quota);
         // override data

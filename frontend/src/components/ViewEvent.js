@@ -68,12 +68,13 @@ function ViewEvent(props) {
         setMyContract(myContractInstance);
 
         //let register = await myContract.methods.register('andika','andika').send();
-        let eventName = await myContractInstance.methods.eventName.call();
-        let eventAddress = await myContractInstance.methods.eventAddress.call();
+        let eventName = await myContractInstance.methods.eventName().call();
+        let eventAddress = await myContractInstance.methods.eventAddress().call();
         let rewards = await myContractInstance.methods.rewards().call();
         if(rewards==null){
             rewards=[0,0,'-'];
         }
+
         let status = await myContractInstance.methods.status.call();
         let isRegister = await myContractInstance.methods.isRegister(coinbase).call();
         setIsRegister(isRegister);
@@ -83,12 +84,12 @@ function ViewEvent(props) {
             name: localData.name, // TODO find out eventName call is return function
             address: localData.physicalAddress,
             rewards:`${rewards[0]/(10**rewards[1])} ${rewards[2]}`,
-            status: 0,
+            status: status,
             startDate: localData.startDate,
             endDate: localData.endDate,
         });
 
-        let owner = await myContractInstance.methods.isOwner.call();
+        let owner = await myContractInstance.methods.isOwner().call();
         setOwner(owner);
 
     
