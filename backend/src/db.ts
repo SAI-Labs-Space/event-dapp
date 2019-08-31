@@ -1,6 +1,6 @@
 import * as path from 'path';
 import * as os from 'os';
-import { INTEGER, Sequelize, STRING,DATE, TEXT } from 'sequelize';
+import { INTEGER, Sequelize, STRING,DATE, TEXT, BOOLEAN } from 'sequelize';
 
 import { User,Event } from './models';
 
@@ -76,6 +76,10 @@ Event.init(
     },
     physicalAddress: {
       type: TEXT
+    },
+    disbursed: {
+      type: BOOLEAN,
+      defaultValue: false
     }
   },
   {
