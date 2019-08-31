@@ -20,7 +20,7 @@ function MainHeader() {
         <div className=" desktop-menu menu-top-w menu-activated-on-hover">
             <div className="menu-top-i">
                 <div className="logo-w">
-                    <a className="logo" href="index.html"><img src="/img/logo.png" /></a>
+                    <a className="logo" href="/"><img src="/img/logo.png" /></a>
                 </div>
                 <div className="logged-user-w">
                     <ul className="main-menu">

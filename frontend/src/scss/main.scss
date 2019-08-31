@@ -110,6 +110,12 @@ TABLE OF CONTENTS
 /* ##. Responsive Styles */
 @import "responsive";
 
+$color-warning: #ffc107;
+$color-success: #28a745;
+$color-danger: #dc3545;
+$color-info: #17a2b8;
+$dot-size: 20px;
+
 .btn:disabled {
   cursor: no-drop !important;
 }
@@ -185,4 +191,77 @@ TABLE OF CONTENTS
 
 .can-click:hover {
   cursor: pointer !important;
+}
+
+.dot {
+  height: $dot-size;
+  width: $dot-size;
+  background-color: #bbb;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.dot-warning {
+  height: $dot-size;
+  width: $dot-size;
+  background-color: $color-warning;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.dot-info {
+  height: $dot-size;
+  width: $dot-size;
+  background-color: $color-info;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.dot-success {
+  height: $dot-size;
+  width: $dot-size;
+  background-color: $color-success;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.flex {
+  display: -webkit-box;      /* OLD - iOS 6-, Safari 3.1-6 */
+  display: -moz-box;         /* OLD - Firefox 19- (buggy but mostly works) */
+  display: -ms-flexbox;      /* TWEENER - IE 10 */
+  display: -webkit-flex;     /* NEW - Chrome */
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.ellipsis-anim span {
+  opacity: 0;
+  -webkit-animation: ellipsis-dot 1s infinite;
+  animation: ellipsis-dot 1s infinite;
+}
+
+.ellipsis-anim span:nth-child(1) {
+  -webkit-animation-delay: 0.0s;
+  animation-delay: 0.0s;
+}
+.ellipsis-anim span:nth-child(2) {
+  -webkit-animation-delay: 0.1s;
+  animation-delay: 0.1s;
+}
+.ellipsis-anim span:nth-child(3) {
+  -webkit-animation-delay: 0.2s;
+  animation-delay: 0.2s;
+}
+
+@-webkit-keyframes ellipsis-dot {
+    0% { opacity: 0; }
+   50% { opacity: 1; }
+  100% { opacity: 0; }
+}
+
+@keyframes ellipsis-dot {
+    0% { opacity: 0; }
+   50% { opacity: 1; }
+  100% { opacity: 0; }
 }

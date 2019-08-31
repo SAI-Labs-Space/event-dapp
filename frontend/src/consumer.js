@@ -16,3 +16,15 @@ export const IsLogged = (props) => (
         }}
     </Context.Consumer>
 );
+
+export const IsNotLogged = (props) => (
+    <Context.Consumer>
+        {value => {
+            if (value.address.length === 0) {
+                return props.children
+            } else {
+                return null;
+            }
+        }}
+    </Context.Consumer>
+);

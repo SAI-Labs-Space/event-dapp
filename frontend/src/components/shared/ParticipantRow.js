@@ -17,7 +17,7 @@ function ParticipantRow(props) {
             </td>
             <td>
                 {props.item.checkIn=='No' &&
-                                    <button className="btn btn-sm btn-success" onClick={()=>props.callback(props.item.address,props.index)}>mark attend</button>
+                                    <button disabled={props && props.disabled} className="btn btn-sm btn-success" onClick={()=>props.callback(props.item.address,props.index)}>mark attend</button>
                 }
 
             </td>

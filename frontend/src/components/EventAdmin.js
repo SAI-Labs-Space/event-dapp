@@ -7,7 +7,8 @@ import classnames from 'classnames';
 import connector from '../util/connector';
 import Abi from '../contracts/abi';
 import { withRouter } from 'react-router';
-import moment from 'moment';
+import DateTimeLabel from './shared/DateTimeLabel';
+import ConditionalRender from './shared/ConditionalRender';
 
 const BASE_URL = 'http://localhost:8000/api';
 
@@ -18,15 +19,14 @@ function EventAdmin(props) {
     const [event, setEvent] = useState({
         name: '-',
         address: '-',
-        quota:0
+        quota: 0
     });
     const [participants, setParticipants] = useState([]);
-   
-
     const [isLoaded, setLoaded] = useState(false);
-    
-    if(isLoaded==false){
-        
+    const [successFetchData, setFetchSuccess] = useState(false);
+
+    if (isLoaded == false) {
+
         init();
         setLoaded(true);
     }
@@ -42,13 +42,14 @@ function EventAdmin(props) {
         return response.json();
     }
 
-    
-    async function init(){
+
+    async function init() {
+        setFetchSuccess(false);
         let address = props.match.params.id;//props.match.params.id;
         let web3Instance
-        try{
+        try {
             web3Instance = await connector.getWeb3(window);
-          }catch(err){
+        } catch (err) {
             window.alert(err);
             return;
         }
@@ -58,9 +59,9 @@ function EventAdmin(props) {
         // Retrieve the byte code
         const coinbase = await web3Instance.eth.getCoinbase();
 
-        let myContractInstance = new web3Instance.eth.Contract(abi,address,{from:coinbase});
+        let myContractInstance = new web3Instance.eth.Contract(abi, address, { from: coinbase });
         setContract(myContractInstance);
-     
+
         let eventName = await myContractInstance.methods.eventName().call();
         let eventAddress = await myContractInstance.methods.eventAddress().call();
         let rewards = await myContractInstance.methods.rewards().call();
@@ -70,46 +71,52 @@ function EventAdmin(props) {
         console.log(quota);
         // override data
         quota = 0;
-        eventName = "-";
+        // eventName = "-";
         eventAddress = "-";
 
         let localData = await getFromDB(props.match.params.id);
+        console.log(localData);
 
         setEvent({
-            name: localData.name,
-            address: localData.physicalAddress,
-            rewards:`${rewards[0]} ${rewards[1]}`,
+            name: eventName,
+            address: localData.location,
+            rewards: `${rewards[0]} ${rewards[1]}`,
             startDate: localData.startDate,
             endDate: localData.endDate,
             quota: quota,
-            status:status,
-        })
+            status: status,
+            disbursed: localData.disbursed,
+            eventAddress: address
+        });
+
+        setFetchSuccess(true);
 
         let participantsAddress = await myContractInstance.methods.getParticipants().call();
-       
-        let workers=[];
+
+        let workers = [];
         participantsAddress.forEach(item => {
             workers.push(myContractInstance.methods.getUser(item).call());
         });
 
-        Promise.all(workers).then(results=>{
-            let participants=[];
-           results.forEach((items,index)=>{
-               participants.push({
-                   address:participantsAddress[index],
-                   email:items[0],
-                   name:items[1],
-                   checkIn:items[2]==true?'Yes':'No',
-               })
-           })
-           setParticipants(participants);
+        Promise.all(workers).then(results => {
+            let participants = [];
+            results.forEach((items, index) => {
+                participants.push({
+                    address: participantsAddress[index],
+                    email: items[0],
+                    name: items[1],
+                    checkIn: items[2] == true ? 'Yes' : 'No',
+                })
+            })
+            setParticipants(participants);
         });
 
         // let participants = await myContractInstance.methods.getParticipants().call();
         // console.log(participants);
-        
-     
-       
+    }
+
+    function reloadEvent() {
+        init();
     }
 
     return (
@@ -145,34 +152,39 @@ function EventAdmin(props) {
                                         <br />
                                         <TabContent activeTab={tab}>
                                             <TabPane tabId="1">
-                                                <div className="form">
-                                                    <div className="form-group row">
-                                                        <label className="control-label bold col-2">Event Name</label>
-                                                        <label className="control-label col-6">{event.name}</label>
+                                                <ConditionalRender when={successFetchData}>
+                                                    <div className="form">
+                                                        <div className="form-group row">
+                                                            <label className="control-label bold col-2">Event Name</label>
+                                                            <label className="control-label col-6">{event.name}</label>
+                                                        </div>
+                                                        <div className="form-group row">
+                                                            <label className="control-label bold col-2">Where</label>
+                                                            <label className="control-label col-6">{event.address}</label>
+                                                        </div>
+                                                        <div className="form-group row">
+                                                            <label className="control-label bold col-2">When</label>
+                                                            <label className="control-label col-6">
+                                                                <DateTimeLabel date={event.startDate} /> - <DateTimeLabel date={event.endDate} />
+                                                            </label>
+                                                        </div>
+                                                        <div className="form-group row">
+                                                            <label className="control-label bold col-2">RSVP</label>
+                                                            <label className="control-label bold col-6">
+                                                                Free
+                                                        </label>
+                                                        </div>
                                                     </div>
-                                                    <div className="form-group row">
-                                                        <label className="control-label bold col-2">Where</label>
-                                                        <label className="control-label col-6">{event.address}</label>
-                                                    </div>
-                                                    <div className="form-group row">
-                                                        <label className="control-label bold col-2">When</label>
-                                                        <label className="control-label col-6">
-                                                            { moment(event.startDate).format('LLL') } - { moment(event.endDate).format('LLL') }
-                                                </label>
-                                                    </div>
-                                                    <div className="form-group row">
-                                                        <label className="control-label bold col-2">RSVP</label>
-                                                        <label className="control-label bold col-6">
-                                                           Free
-                                                </label>
-                                                    </div>
-                                                </div>
+                                                </ConditionalRender>
+                                                <ConditionalRender when={!successFetchData}>
+                                                    loading data ...
+                                                </ConditionalRender>
                                             </TabPane>
                                             <TabPane tabId="2">
-                                                <ParticipantTable eventId={event.id} participants={participants} contract={contract} />
+                                                <ParticipantTable fetched={successFetchData} reloadEvent={reloadEvent} eventId={event.id} participants={participants} contract={contract} />
                                             </TabPane>
                                             <TabPane tabId="3">
-                                                <EventContract eventId={event.id} limit={event.quota} status={event.status} contract={contract} />
+                                                <EventContract reloadEvent={reloadEvent} eventAddr={event.eventAddress} fetched={successFetchData} disbursed={event.disbursed} eventId={event.id} limit={event.quota} status={event.status} contract={contract} />
                                             </TabPane>
                                         </TabContent>
                                     </div>
