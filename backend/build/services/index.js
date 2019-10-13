@@ -1,9 +1,9 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-var express = require("express");
-var auth_1 = require("./auth");
-var users_1 = require("./users");
-var event_1 = require("./event");
+const express = require("express");
+const auth_1 = require("./auth");
+const users_1 = require("./users");
+const event_1 = require("./event");
 exports.services = express.Router();
 exports.services.use('/auth', auth_1.authRouter);
 exports.services.use('/users', users_1.userRouter);

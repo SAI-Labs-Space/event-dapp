@@ -1,7 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-var express = require("express");
-var controller = require("./controller");
+const express = require("express");
+const controller = require("./controller");
 exports.eventRouter = express.Router();
 /** GET /api/events */
 exports.eventRouter.route('/').get(controller.find);

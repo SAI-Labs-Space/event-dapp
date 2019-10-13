@@ -1,9 +1,9 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-var express = require("express");
-var jwt = require("express-jwt");
-var config_1 = require("../../config");
-var controller = require("./controller");
+const express = require("express");
+const jwt = require("express-jwt");
+const config_1 = require("../../config");
+const controller = require("./controller");
 exports.userRouter = express.Router();
 /** GET /api/users */
 exports.userRouter.route('/').get(controller.find);
