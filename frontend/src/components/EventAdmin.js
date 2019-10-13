@@ -10,7 +10,7 @@ import { withRouter } from 'react-router';
 import DateTimeLabel from './shared/DateTimeLabel';
 import ConditionalRender from './shared/ConditionalRender';
 
-const BASE_URL = 'http://localhost:8000/api';
+const BASE_URL = 'https://service-eventdapp.tabspace.xyz/api';
 
 
 function EventAdmin(props) {

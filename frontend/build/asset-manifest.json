@@ -1,0 +1,18 @@
+{
+  "files": {
+    "main.css": "/static/css/main.96409620.chunk.css",
+    "main.js": "/static/js/main.2e3da1b0.chunk.js",
+    "main.js.map": "/static/js/main.2e3da1b0.chunk.js.map",
+    "runtime~main.js": "/static/js/runtime~main.a8a9905a.js",
+    "runtime~main.js.map": "/static/js/runtime~main.a8a9905a.js.map",
+    "static/css/2.47e764da.chunk.css": "/static/css/2.47e764da.chunk.css",
+    "static/js/2.4da69312.chunk.js": "/static/js/2.4da69312.chunk.js",
+    "static/js/2.4da69312.chunk.js.map": "/static/js/2.4da69312.chunk.js.map",
+    "index.html": "/index.html",
+    "precache-manifest.b2943c60102e2d2dc844a400f9fd6409.js": "/precache-manifest.b2943c60102e2d2dc844a400f9fd6409.js",
+    "service-worker.js": "/service-worker.js",
+    "static/css/2.47e764da.chunk.css.map": "/static/css/2.47e764da.chunk.css.map",
+    "static/css/main.96409620.chunk.css.map": "/static/css/main.96409620.chunk.css.map",
+    "static/media/main.scss": "/static/media/onboarding-gradient-ver-dark.010caf3f.png"
+  }
+}

@@ -5,7 +5,7 @@ import { useGlobalState } from '../../util/state';
 import { toast } from 'react-toastify';
 import { IsLogged } from '../../consumer';
 
-const BASE_URL = 'http://localhost:8000/api';
+const BASE_URL = 'https://service-eventdapp.tabspace.xyz/api';
 
 function MainHeader() {
 

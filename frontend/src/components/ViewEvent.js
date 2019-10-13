@@ -12,7 +12,7 @@ import LoadingText from './shared/LoadingText';
 import { IsLogged, IsNotLogged } from '../consumer';
 import BlockchainProcessIndicator from './shared/BlockchainProcessIndicator';
 
-const BASE_URL = 'http://localhost:8000/api';
+const BASE_URL = 'https://service-eventdapp.tabspace.xyz/api';
 
 function ViewEvent(props) {
 

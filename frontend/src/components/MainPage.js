@@ -3,7 +3,7 @@ import MainHeader from './shared/MainHeader';
 import { withRouter } from 'react-router';
 import { IsLogged } from '../consumer';
 
-const BASE_URL='http://localhost:8000/api';
+const BASE_URL='https://service-eventdapp.tabspace.xyz/api';
 
 class MainPage extends React.Component {
 
