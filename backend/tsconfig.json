@@ -1,8 +1,15 @@
 {
-  "compilerOptions": {
-    "strict": true,
-    "target": "es5",
-    "outDir": "build"
-  },
-  "include": ["src/"]
-}
+    "compilerOptions": {
+      "strict": true,
+      "types": ["node"],
+      "module": "commonjs",
+      "target": "es6",
+      "experimentalDecorators": true,
+      "emitDecoratorMetadata": true,
+      "outDir": "build",
+      "moduleResolution": "node"
+    },
+    "include": ["src/"]
+  }
+  
+  

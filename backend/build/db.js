@@ -1,8 +1,8 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-var sequelize_1 = require("sequelize");
-var models_1 = require("./models");
-var sequelize = new sequelize_1.Sequelize('event-database', '', undefined, {
+const sequelize_1 = require("sequelize");
+const models_1 = require("./models");
+const sequelize = new sequelize_1.Sequelize('event-database', '', undefined, {
     dialect: 'sqlite',
     storage: './db.sqlite',
     logging: false
@@ -13,7 +13,7 @@ models_1.User.init({
     nonce: {
         allowNull: false,
         type: sequelize_1.INTEGER.UNSIGNED,
-        defaultValue: function () { return Math.floor(1000 + Math.random() * 9000); } // Initialize with a random nonce
+        defaultValue: () => Math.floor(1000 + Math.random() * 9000) // Initialize with a random nonce
     },
     publicAddress: {
         allowNull: false,
@@ -34,7 +34,7 @@ models_1.User.init({
     }
 }, {
     modelName: 'user',
-    sequelize: sequelize,
+    sequelize,
     timestamps: false
 });
 models_1.Event.init({
@@ -75,7 +75,7 @@ models_1.Event.init({
     }
 }, {
     modelName: 'event',
-    sequelize: sequelize,
+    sequelize,
     timestamps: false
 });
 // Create new tables

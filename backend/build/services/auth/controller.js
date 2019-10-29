@@ -1,40 +1,40 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-var ethUtil = require("ethereumjs-util");
-var sigUtil = require("eth-sig-util");
-var jwt = require("jsonwebtoken");
-var config_1 = require("../../config");
-var user_model_1 = require("../../models/user.model");
-exports.create = function (req, res, next) {
-    var _a = req.body, signature = _a.signature, publicAddress = _a.publicAddress;
+const ethUtil = require("ethereumjs-util");
+const sigUtil = require("eth-sig-util");
+const jwt = require("jsonwebtoken");
+const config_1 = require("../../config");
+const user_model_1 = require("../../models/user.model");
+exports.create = (req, res, next) => {
+    const { signature, publicAddress } = req.body;
     if (!signature || !publicAddress)
         return res
             .status(400)
             .send({ error: 'Request should have signature and publicAddress' });
-    return (user_model_1.User.findOne({ where: { publicAddress: publicAddress } })
+    return (user_model_1.User.findOne({ where: { publicAddress } })
         ////////////////////////////////////////////////////
         // Step 1: Get the user with the given publicAddress
         ////////////////////////////////////////////////////
-        .then(function (user) {
+        .then(user => {
         if (!user)
             return res.status(401).send({
-                error: "User with publicAddress " + publicAddress + " is not found in database"
+                error: `User with publicAddress ${publicAddress} is not found in database`
             });
         return user;
     })
         ////////////////////////////////////////////////////
         // Step 2: Verify digital signature
         ////////////////////////////////////////////////////
-        .then(function (user) {
+        .then(user => {
         if (!(user instanceof user_model_1.User)) {
             // Should not happen, we should have already sent the response
             throw new Error('User is not defined in "Verify digital signature".');
         }
-        var msg = "I am signing my one-time nonce: " + user.nonce;
+        const msg = `I am signing my one-time nonce: ${user.nonce}`;
         // We now are in possession of msg, publicAddress and signature. We
         // will use a helper from eth-sig-util to extract the address from the signature
-        var msgBufferHex = ethUtil.bufferToHex(Buffer.from(msg, 'utf8'));
-        var address = sigUtil.recoverPersonalSignature({
+        const msgBufferHex = ethUtil.bufferToHex(Buffer.from(msg, 'utf8'));
+        const address = sigUtil.recoverPersonalSignature({
             data: msgBufferHex,
             sig: signature
         });
@@ -52,7 +52,7 @@ exports.create = function (req, res, next) {
         ////////////////////////////////////////////////////
         // Step 3: Generate a new nonce for the user
         ////////////////////////////////////////////////////
-        .then(function (user) {
+        .then(user => {
         if (!(user instanceof user_model_1.User)) {
             // Should not happen, we should have already sent the response
             throw new Error('User is not defined in "Generate a new nonce for the user".');
@@ -63,22 +63,21 @@ exports.create = function (req, res, next) {
         ////////////////////////////////////////////////////
         // Step 4: Create JWT
         ////////////////////////////////////////////////////
-        .then(function (user) {
-        return new Promise(function (resolve, reject) {
-            // https://github.com/auth0/node-jsonwebtoken
-            return jwt.sign({
-                payload: {
-                    id: user.id,
-                    publicAddress: publicAddress
-                }
-            }, config_1.config.secret, {}, function (err, token) {
-                if (err) {
-                    return reject(err);
-                }
-                return resolve(token);
-            });
-        });
+        .then(user => {
+        return new Promise((resolve, reject) => 
+        // https://github.com/auth0/node-jsonwebtoken
+        jwt.sign({
+            payload: {
+                id: user.id,
+                publicAddress
+            }
+        }, config_1.config.secret, {}, (err, token) => {
+            if (err) {
+                return reject(err);
+            }
+            return resolve(token);
+        }));
     })
-        .then(function (accessToken) { return res.json({ accessToken: accessToken }); })
-        .catch(function (err) { return res.status(400).json({ message: err.message }); }));
+        .then(accessToken => res.json({ accessToken }))
+        .catch(err => res.status(400).json({ message: err.message })));
 };
